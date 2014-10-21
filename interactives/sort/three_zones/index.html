@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script>
+			window.jQuery || document.write('<script src="js/jquery/jquery-1.11.0.min.js"><\/script>')
+		</script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<script>
+			window.jQuery.ui || document.write('<script src="js/jquery/jquery-ui-1.10.4.custom.min.js"><\/script>')
+		</script>
+		<!-- DECLARE YOUR VARIABLES HERE!!!! -->
+		<script type="text/javascript">
+			var $jsonFile = 'assets/json/level2.json';
+		</script>
+		<link rel="stylesheet" href="assets/theme/jquery-ui-1.10.4.custom/css/custom-theme/jquery-ui-1.10.4.custom.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/styles/global.css">
+
+	</head>
+	<body>
+		<h1></h1>
+		<div class="simulation">
+			<div class="interactive_container_all">
+				<div class="interactive_container">
+					<div class="instructions_content"></div>
+					<div class="images_container"><ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix"></ul></div>
+					<div class="dropzone_container"></div>
+					<div class="clear"></div>
+					<div class="response"></div>
+					<div id="successMessage">
+				    	<h2>You did it!</h2><h2>Your Score is <span class="score">0</span> points.</h2>
+				    </div>
+				</div>
+				<div class="footer">
+					<button class="credits_button"></button>
+					<div class="credits_content"></div>
+					<button class="instructions_button"></button>
+					<div class="instructions_content"></div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<div class="instructions"><h2></h2><div class="body"></div></div>
+		<div class="audio"></div>
+		
+		<script src="assets/scripts/global.js"></script>
+		<script src="assets/scripts/ga_tracking.js"></script>
+	</body>
+</html>

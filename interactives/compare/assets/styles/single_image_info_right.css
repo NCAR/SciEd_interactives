@@ -1,0 +1,8 @@
+#interactive_container_all #controls_container {
+	float: left;
+	width: 50%;
+}
+#interactive_container_all #controls_container1, #interactive_container_all #image_content1 {
+	float: none;
+	width: auto
+}

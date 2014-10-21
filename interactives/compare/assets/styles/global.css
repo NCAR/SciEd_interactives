@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:400,400italic,500,700&subset=latin");
+* {
+	font-family: 'Ubuntu',Arial,sans-serif;
+}
+
+#interactive_container_all{
+	background-color:#fff;
+}
+#interactive_container {
+	margin:0;
+	padding:10px;
+}
+#interactive_container_all #controls_container, #interactive_container_all #image_container, #interactive_container_all #content_container, #interactive_container_all #keys {
+	
+	width: auto;
+	margin: 0;
+}
+#interactive_container_all #controls_container1, #interactive_container_all #controls_container2, #interactive_container_all #image_container1, #interactive_container_all #image_container2, #interactive_container_all #image_content1, #interactive_container_all #image_content2, #interactive_container_all #key1, #interactive_container_all #key2 {
+	width: 50%;
+	margin: 0;
+	float: left;
+}
+#interactive_container_all #image_container1, #interactive_container_all #image_container2 {
+	text-align: center;
+}
+
+#interactive_container_all #interactive_container_all, #interactive_container_all #interactive_container_all * {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box; /* Firefox */
+}
+#interactive_container_all #footer {
+	background-color: #336699;
+	color: #fff;
+	padding: 10px 5px;
+	width: 100%;
+}
+
+#footer button {
+	float: right;
+}
+#interactive_container_all .clear {
+	clear: both;
+}
+

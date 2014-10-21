@@ -1,0 +1,22 @@
+# jQuery UI Theme folders
+interactives/compare/assets/theme
+interactives/sort/two_zones/assets/theme
+interactives/sort/three_zones/assets/theme
+interactives/memory/assets/theme
+
+#images
+interactives/compare/assets/images
+interactives/sort/two_zones/assets/images
+interactives/sort/three_zones/assets/images
+interactives/memory/assets/images
+
+#audio
+interactives/sort/two_zones/assets/audio
+interactives/sort/three_zones/assets/audio
+
+#content
+interactives/compare/content
+
+# Other files and folders
+interactives/compare/assets/scripts/jquery
+interactives/memory/assets/scripts/jquery

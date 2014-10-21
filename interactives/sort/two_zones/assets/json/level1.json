@@ -1,0 +1,145 @@
+{
+	"SORT": {
+		"PAGEINFO": {
+			"PageTitle": "Sort Pictures: Solar Min vs Solar Max",
+			"correctAudioMP3": "assets/audio/bell.mp3",
+			"correctAudioOGG": "assets/audio/bell.ogg",
+			"wrongAudioMP3": "assets/audio/clang.mp3",
+			"wrongAudioOGG": "assets/audio/clang.ogg",
+			"finishedAudioMP3": "assets/audio/applause.mp3",
+			"finishedAudioOGG": "assets/audio/applause.ogg",
+			"instructions_title": "Instructions",
+			"instructions_body": "The small images to your left are all pictures of the Sun. Some show the Sun at times called \"solar max\", when there are lots of sunspots. Others show the Sun near \"solar min\", when there are few or no sunspots. The pictures were taken with different wavelengths of light, such as X-rays or ultraviolet light.",
+			"instructions_width": 550,
+			"instructions_height": 250,
+			"credits_title": "Credits",
+			"credits_body": "<p align=\"center\"><img src=\"assets/images/scied_logo_500x55.png\" width=\"500px\"/></p><p>This interactive was created by the <strong>UCAR Center for Science Education</strong>.</p><p>Software design by <strong>Ryan C. McVeigh</strong> and <strong>Randy M. Russell</strong>. Programming by Ryan McVeigh. Text, image selection and educational design by Randy Russell.</p><p>Images provided by NCAR High Altitude Observatory, SOHO (NASA/ESA), Big Bear Solar Observatory, Yohkoh - NASA and the Institute of Space and Astronautical Science (Japan), and Kanzelhoehe Solar Observatory.</p><p>&copy; 2012 University Corporation for Atmospheric Research</p>",
+			"credits_width": 550,
+			"credits_height": 450
+		},
+		"DROPZONE": [
+			{
+				"DropZoneClass": "upper",
+				"DropZoneTitle": "Solar Maximum",
+				"DropZoneDescription": "(many sunspots)",
+				"DropZoneImage": "assets/images/solar_max_bg_618x264.png"
+			}, {
+				"DropZoneClass": "lower",
+				"DropZoneTitle": "Solar Minimum",
+				"DropZoneDescription": "(few or no sunspots)",
+				"DropZoneImage": "assets/images/solar_min_bg_611x253.jpg"
+			}
+		],
+		"DRAGGABLE": [
+			{
+				"TITLE": "Visible 2006",
+				"ID": "visible_min",
+				"correctDiv": "lower",
+				"IMAGE": "assets/images/solar_min_visible_soho_mdi_15may2006_150x150.jpg",
+				"CorrectResponseTitle": "Correct!",
+				"CorrectResponseBody": "This photo shows the Sun in visible light. You cannot look directly at the Sun without harming your eyes! If you could, this is about what you might see. The number of sunspots increases and then decreases in a repeating cycle that lasts about 11 years. This photo shows the Sun at the \"solar min\" phase of the sunspot cycle, when there are very few sunspots.",
+				"WrongResponseTitle": "Sorry, try again.",
+				"WrongResponseBody": "This photo shows the Sun in visible light. You cannot look directly at the Sun without harming your eyes! If you could, this is about what you might see. The number of sunspots increases and then decreases in a repeating cycle that lasts about 11 years. This photo shows the Sun at the \"solar min\" phase of the sunspot cycle, when there are very few sunspots."
+				}, {
+				"TITLE": "Visible 2001",
+				"ID": "visible_max",
+				"correctDiv": "upper",
+				"IMAGE": "assets/images/solar_max_visible_soho_mdi_29march2001_150x150.jpg",
+				"CorrectResponseTitle": "That's right!",
+				"CorrectResponseBody": "This photo shows the Sun in visible light. You cannot look directly at the Sun without harming your eyes! If you could, this is about what you might see. The number of sunspots increases and then decreases in a repeating cycle that lasts about 11 years. This photo shows the Sun at the \"solar max\" phase of the Sunspot Cycle, when there are lots of sunspots.",
+				"WrongResponseTitle": "Sorry, try again.",
+				"WrongResponseBody": "This photo shows the Sun in visible light. You cannot look directly at the Sun without harming your eyes! If you could, this is about what you might see. The number of sunspots increases and then decreases in a repeating cycle that lasts about 11 years. This photo shows the Sun at the \"solar max\" phase of the Sunspot Cycle, when there are lots of sunspots."
+			}, {
+				"TITLE": "UV 2009",
+				"ID": "uv_min",
+				"correctDiv": "lower",
+				"IMAGE": "assets/images/uv_min_soho_eit_171_17july2009_150x150.jpg",
+				"CorrectResponseTitle": "Correct!",
+				"CorrectResponseBody": "This picture shows the Sun in ultraviolet (UV) \"light\". Powerful magnetic fields around sunspots produce disturbances in the Sun's atmosphere. These disturbances give off high-energy radiation in the form of UV light and X-rays. During solar min, when there are few sunspots, UV pictures of the Sun look mostly plain and feature-less.",
+				"WrongResponseTitle": "Sorry, try again.",
+				"WrongResponseBody": "This picture shows the Sun in ultraviolet (UV) \"light\". Powerful magnetic fields around sunspots produce disturbances in the Sun's atmosphere. These disturbances give off high-energy radiation in the form of UV light and X-rays. During solar min, when there are few sunspots, UV pictures of the Sun look mostly plain and feature-less."
+				}, {
+				"TITLE": "X-ray 2001",
+				"ID": "xray_max",
+				"correctDiv": "upper",
+				"IMAGE": "assets/images/xray_max_yohkoh_28march2001_150x150.jpg",
+				"CorrectResponseTitle": "Correct!",
+				"CorrectResponseBody": "This picture shows how the Sun would look if you had X-ray vision! Powerful magnetic fields around sunspots produce disturbances in the Sun's atmosphere. These disturbances give off high-energy radiation in the form of X-rays and ultraviolet \"light\". Around solar max, when there are lots of sunspots, X-ray pictures of the Sun show many bright areas. The bright regions appear in the Sun's atmosphere above sunspots.",
+				"WrongResponseTitle": "Sorry, try again.",
+				"WrongResponseBody": "This picture shows how the Sun would look if you had X-ray vision! Powerful magnetic fields around sunspots produce disturbances in the Sun's atmosphere. These disturbances give off high-energy radiation in the form of X-rays and ultraviolet \"light\". Around solar max, when there are lots of sunspots, X-ray pictures of the Sun show many bright areas. The bright regions appear in the Sun's atmosphere above sunspots."
+			}, {
+				"TITLE": "X-ray 1996",
+				"ID": "xray_max2",
+				"correctDiv": "lower",
+				"IMAGE": "assets/images/xray_max_yohkoh_8march1996_150x150.jpg",
+				"CorrectResponseTitle": "That's right!",
+				"CorrectResponseBody": "This picture shows how the Sun would look if you had X-ray vision! Powerful magnetic fields around sunspots produce disturbances in the Sun's atmosphere. These disturbances give off high-energy radiation in the form of X-rays and ultraviolet \"light\". During solar min, when there are few sunspots, X-ray pictures of the Sun look relatively plain. They show just a scattering of small, bright dots where X-rays are being emitted.",
+				"WrongResponseTitle": "Sorry, try again.",
+				"WrongResponseBody": "This picture shows how the Sun would look if you had X-ray vision! Powerful magnetic fields around sunspots produce disturbances in the Sun's atmosphere. These disturbances give off high-energy radiation in the form of X-rays and ultraviolet \"light\". During solar min, when there are few sunspots, X-ray pictures of the Sun look relatively plain. They show just a scattering of small, bright dots where X-rays are being emitted."
+				}, {
+				"TITLE": "UV 2002",
+				"ID": "uv_max",
+				"correctDiv": "upper",
+				"IMAGE": "assets/images/uv_max_soho_eit_171_3feb2002_150x150.jpg",
+				"CorrectResponseTitle": "That's right!",
+				"CorrectResponseBody": "This picture shows the Sun in ultraviolet (UV) \"light\". Powerful magnetic fields around sunspots produce disturbances in the Sun's atmosphere. These disturbances give off high-energy radiation in the form of UV light and X-rays. During solar max, when there are lots of sunspots, UV pictures of the Sun show many bright areas. The bright regions appear in the Sun's atmosphere above sunspots.",
+				"WrongResponseTitle": "Sorry, try again.",
+				"WrongResponseBody": "This picture shows the Sun in ultraviolet (UV) \"light\". Powerful magnetic fields around sunspots produce disturbances in the Sun's atmosphere. These disturbances give off high-energy radiation in the form of UV light and X-rays. During solar max, when there are lots of sunspots, UV pictures of the Sun show many bright areas. The bright regions appear in the Sun's atmosphere above sunspots."
+			}, {
+				"TITLE": "Corona 1994",
+				"ID": "corona_chile",
+				"correctDiv": "lower",
+				"IMAGE": "assets/images/corona_eclipse_chile_1994_150x150.jpg",
+				"CorrectResponseTitle": "Correct!",
+				"CorrectResponseBody": "This photo shows the corona, the outer, uppermost part of the Sun's atmosphere. The picture was taken during a solar eclipse, when the Moon blocks out the Sun. At solar min, when there are few sunspots, the corona is brightest around the Sun's equator. Around solar min, the corona looks like a pair of wings on either side of the Sun.",
+				"WrongResponseTitle": "Sorry, try again.",
+				"WrongResponseBody": "This photo shows the corona, the outer, uppermost part of the Sun's atmosphere. The picture was taken during a solar eclipse, when the Moon blocks out the Sun. At solar min, when there are few sunspots, the corona is brightest around the Sun's equator. Around solar min, the corona looks like a pair of wings on either side of the Sun."
+			}, {
+				"TITLE": "Corona 1980",
+				"ID": "corona_india",
+				"correctDiv": "upper",
+				"IMAGE": "assets/images/corona_eclipse_india_1980_150x150.jpg",
+				"CorrectResponseTitle": "That's right!",
+				"CorrectResponseBody": "This photo shows the corona, the outer, uppermost part of the Sun's atmosphere. The picture was taken during a solar eclipse, when the Moon blocks out the Sun. At solar max, when there are lots of sunspots, the corona streams outward from the Sun in all directions.",
+				"WrongResponseTitle": "Sorry, try again.",
+				"WrongResponseBody": "This photo shows the corona, the outer, uppermost part of the Sun's atmosphere. The picture was taken during a solar eclipse, when the Moon blocks out the Sun. At solar max, when there are lots of sunspots, the corona streams outward from the Sun in all directions."
+			}, {
+				"TITLE": "Magnet 2002",
+				"ID": "magnet_max",
+				"correctDiv": "upper",
+				"IMAGE": "assets/images/magnetogram_max_soho_4feb2002_150x150.jpg",
+				"CorrectResponseTitle": "Correct!",
+				"CorrectResponseBody": "This a special type of picture of the Sun called a \"magnetogram\". It is a map of magnetic fields on the Sun. Black and white areas on a magnetogram show areas of different \"polarity\" of magnetic fields - like the North and South poles of a bar magnet. Sunspots have very, very strong magnetic fields. When there are lots of sunspots at solar max, a magnetogram has alternating patches of black and white - showing us the strong magnetic fields around sunspots.",
+				"WrongResponseTitle": "Sorry, try again.",
+				"WrongResponseBody": "This a special type of picture of the Sun called a \"magnetogram\". It is a map of magnetic fields on the Sun. Black and white areas on a magnetogram show areas of different \"polarity\" of magnetic fields - like the North and South poles of a bar magnet. Sunspots have very, very strong magnetic fields. When there are lots of sunspots at solar max, a magnetogram has alternating patches of black and white - showing us the strong magnetic fields around sunspots."
+			}, {
+				"TITLE": "H-alpha 2009",
+				"ID": "halpha_min",
+				"correctDiv": "lower",
+				"IMAGE": "assets/images/min_kanzelhoehe_halpha_18aug2009.jpg",
+				"CorrectResponseTitle": "Correct!",
+				"CorrectResponseBody": "This picture shows the Sun as viewed in a specific wavelength of red light given off by hydrogen atoms. Scientists call this a Hydrogen-alpha (or H-alpha) image. It shows the lower part of the Sun's atmosphere, called the chromosphere. During solar min, when there are few sunspots, H-alpha pictures of the Sun look mostly plain and feature-less.",
+				"WrongResponseTitle": "Sorry, try again.",
+				"WrongResponseBody": "This picture shows the Sun as viewed in a specific wavelength of red light given off by hydrogen atoms. Scientists call this a Hydrogen-alpha (or H-alpha) image. It shows the lower part of the Sun's atmosphere, called the chromosphere. During solar min, when there are few sunspots, H-alpha pictures of the Sun look mostly plain and feature-less."
+			}, {
+				"TITLE": "H-alpha 2000",
+				"ID": "halpha_max",
+				"correctDiv": "upper",
+				"IMAGE": "assets/images/max_bbso_halpha_18july2000.jpg",
+				"CorrectResponseTitle": "Correct!",
+				"CorrectResponseBody": "This picture shows the Sun as viewed in a specific wavelength of red light given off by hydrogen atoms. Scientists call this a Hydrogen-alpha (or H-alpha) image. It shows the lower part of the Sun's atmosphere, called the chromosphere. During solar max, when there are lots of sunspots, powerful magnetic fields around sunspots \"stir up\" the solar atmosphere above sunspots. Around solar max, H-alpha pictures have a mixture of brighter and dimmer regions. They also show squiggly lines called \"filaments\".",
+				"WrongResponseTitle": "Sorry, try again.",
+				"WrongResponseBody": "This picture shows the Sun as viewed in a specific wavelength of red light given off by hydrogen atoms. Scientists call this a Hydrogen-alpha (or H-alpha) image. It shows the lower part of the Sun's atmosphere, called the chromosphere. During solar max, when there are lots of sunspots, powerful magnetic fields around sunspots \"stir up\" the solar atmosphere above sunspots. Around solar max, H-alpha pictures have a mixture of brighter and dimmer regions. They also show squiggly lines called \"filaments\"."
+			}, {
+				"TITLE": "Magnet 2006",
+				"ID": "magnet_min",
+				"correctDiv": "lower",
+				"IMAGE": "assets/images/magnetogram_min_soho_18may2006_150x150.jpg",
+				"CorrectResponseTitle": "Correct!",
+				"CorrectResponseBody": "This a special type of picture of the Sun called a \"magnetogram\". It is a map of magnetic fields on the Sun. Black and white areas on a magnetogram show areas of different \"polarity\" of magnetic fields - like the North and South poles of a bar magnet. Sunspots have very, very strong magnetic fields. When there are few sunspots at solar min, a magnetogram is pretty plain and boring. The Sun looks like a uniformly gray ball because its magnetic field is pretty much the same across its surface.",
+				"WrongResponseTitle": "Sorry, try again.",
+				"WrongResponseBody": "This a special type of picture of the Sun called a \"magnetogram\". It is a map of magnetic fields on the Sun. Black and white areas on a magnetogram show areas of different \"polarity\" of magnetic fields - like the North and South poles of a bar magnet. Sunspots have very, very strong magnetic fields. When there are few sunspots at solar min, a magnetogram is pretty plain and boring. The Sun looks like a uniformly gray ball because its magnetic field is pretty much the same across its surface."
+			}
+		]
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"item" : [{
+			"name" : "Image One",
+			"filename" : "assets/images/img1.jpg"
+		},
+		{
+			"name" : "Image One",
+			"filename" : "assets/images/img2.jpg"
+		},
+		{
+			"name" : "Image One",
+			"filename" : "assets/images/img3.jpg"
+		},
+		{
+			"name" : "Image One",
+			"filename" : "assets/images/img4.jpg"
+		},
+		{
+			"name" : "Image One",
+			"filename" : "assets/images/img5.jpg"
+		},
+		{
+			"name" : "Image One",
+			"filename" : "assets/images/img6.jpg"
+		}
+	],
+	"credits" : {
+		"title": "Credits",
+		"content": "<p>This interactive was created by the <strong>UCAR Center for Science Education</strong>.</p>",
+		"width": 550,
+		"height": 450
+	}
+}
