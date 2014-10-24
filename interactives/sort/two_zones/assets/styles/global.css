@@ -35,6 +35,8 @@ body {
 	cursor: move;
     text-align: center;
     width:100px;
+    margin-left:1px;
+    margin-right:1px;
 }
 .dropspot {
 	min-height:240px;
@@ -49,10 +51,10 @@ body {
 }
 
 .dropzone_container {
-	width:480px;
+	width:472px;
 }
 .images_container{
-    width:400px;
+    width:408px;
 }
 .footer {
     position: absolute;
