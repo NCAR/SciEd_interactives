@@ -3,9 +3,46 @@
  *
  */
 $(document).ready(function init_interactive() {
+    
+    // record mouse position
+    var x;
+    var y;
+    var mousetarget;
+    var dragtarget;
+    var dropCorrect = false;
+    $(document).mousemove(function (e) {
+        x = e.pageX;
+        y = e.pageY;
+        mousetarget = e;
+    });
+    
 	//initially hide the first success message
 	$('#successMessage').find('h2:first').hide();
 	var totalScore = 0;
+    
+    // init response
+     $( "div.response" ).dialog(
+            {
+                dialogClass: "no-close",
+                width:500,
+                autoOpen: false,
+                resizable: false,
+                modal: true,
+                buttons: [
+                    {
+                        text: "OK",
+                        click: function() {
+                            $( this ).dialog( "close" );
+                        }
+                    }
+                ]
+            });
+    // if dialog is open and the body is clicked close the dialog
+    $('body').on('click',function onBodyClick(e){
+        if($( "div.response" ).dialog('isOpen')){
+            $( "div.response" ).dialog('close');       
+        }
+    });
 
 	/**
 	 * process the json file and set everything up 
@@ -27,6 +64,8 @@ $(document).ready(function init_interactive() {
 		var credits_body = data.SORT.PAGEINFO.credits_body;
 		var credits_width = data.SORT.PAGEINFO.credits_width;
 		var credits_height = data.SORT.PAGEINFO.credits_height;
+        var choose_level_title = data.SORT.PAGEINFO.choose_level_title;
+        var choose_level_body = data.SORT.PAGEINFO.choose_level_body;
 
 		// place title
 		$('h1').html(title);
@@ -37,6 +76,7 @@ $(document).ready(function init_interactive() {
 		$('.credits_content').html(credits_body);
 		$(".credits_content").dialog({
 			autoOpen : false,
+            title: credits_title,
 			height : credits_height,
 			width : credits_width,
 			modal : true,
@@ -44,20 +84,29 @@ $(document).ready(function init_interactive() {
 		$(".credits_button").button().click(function click_credits() {
 			$(".credits_content").dialog("open");
 		});
-
-		// place instructions
-		$('.instructions_button').html(instructions_title);
-		$('.instructions_content').html(instructions_body);
-		$(".instructions_content").dialog({
+        
+        // place levels button
+		$('.choose_level_button').html(choose_level_title);
+		$('.choose_level_content').html(choose_level_body);
+		$(".choose_level_content").dialog({
 			autoOpen : false,
-			height : instructions_height,
-			width : instructions_width,
+            title: choose_level_title,
+			height : credits_height,
+			width : credits_width,
 			modal : true,
+            width:"300px",
+            height:"auto"
 		});
-		$(".instructions_button").button().click(function click_instructions() {
-			$(".instructions_content").dialog("open");
+		$(".choose_level_button").button().click(function click_choose_level() {
+			$(".choose_level_content").dialog("open");
 		});
-
+            
+        //init start over button
+        $(".start_over_button").button().click(function click_choose_level() {
+			window.location.reload();
+		});
+                
+		
 		// place the audio
 		var html = '<audio id="correctAudio" preload="auto">';
 		html += '<source src="' + correctAudioMP3 + '">';
@@ -82,7 +131,10 @@ $(document).ready(function init_interactive() {
 			var DropZoneTitle = this.DropZoneTitle;
 			var DropZoneDescription = this.DropZoneDescription;
 			var DropZoneImage = this.DropZoneImage;
-			var style = 'background:no-repeat url('+DropZoneImage+') bottom center #DDDDDD;';
+            var DropZoneImageHeight = this.DropZoneImageHeight;
+            var DropZoneImageWidth = this.DropZoneImageWidth;
+            
+			var style = 'background:no-repeat url('+DropZoneImage+') bottom center #DDDDDD;width:'+DropZoneImageWidth+';height:'+DropZoneImageHeight;
 			var html = '<div style="'+style+'" class="ui-widget-content dropspot ' + DropZoneClass + '"><h4 class="ui-widget-header">' + DropZoneTitle + ' ' + DropZoneDescription + '</h4></div>';
 			$('.dropzone_container').append(html);
 		});
@@ -93,22 +145,58 @@ $(document).ready(function init_interactive() {
 			var draggableID = this.ID;
 			var draggableCorrectDiv = this.correctDiv;
 			var draggableImage = this.IMAGE;
-			var draggableCorrectResponseTitle = this.CorrectResponseTitle;
-			var draggableCorrectResponseBody = this.CorrectResponseBody;
-			var draggableWrongResponseTitle = this.WrongResponseTitle;
-			var draggableWrongResponseBody = this.WrongResponseBody;
+			var draggableUpperResponseTitle = this.upperResponseTitle;
+			var draggableUpperResponseBody = this.upperResponseBody;
+			var draggableLowerResponseTitle = this.lowerResponseTitle;
+			var draggableLowerResponseBody = this.lowerResponseBody;
+            
+            var imgHeight = this.imgHeight;
+            var imgWidth = this.imgWidth;
 
 			var html = '<li class="ui-widget-content ui-corner-tr draggable ' + draggableCorrectDiv + '" id="' + draggableID + '"><h5 class="ui-widget-header">' + draggableTitle + '</h5>';
 			html += '<img src=' + draggableImage + ' alt="' + draggableTitle + '" title="' + draggableTitle + '"/>';
-			html += '<div class="correctResponse"><h1>' + draggableCorrectResponseTitle + '</h1><span class="textBody">' + draggableCorrectResponseBody + '</span></div>';
-			html += '<div class="wrongResponse"><h1>' + draggableWrongResponseTitle + '</h1><span class="textBody">' + draggableWrongResponseBody + '</span></div>';
+            
+            if(draggableCorrectDiv == 'upper'){
+                html += '<div class="correctResponse"><h1>' + draggableUpperResponseTitle + '</h1><span class="textBody">' + draggableUpperResponseBody + '</span></div>';
+			html += '<div class="wrongResponse"><h1>' + draggableLowerResponseTitle + '</h1><span class="textBody">' + draggableLowerResponseBody + '</span></div>';
+			
+            } else {
+                  html += '<div class="correctResponse"><h1>' + draggableLowerResponseTitle + '</h1><span class="textBody">' + draggableLowerResponseBody + '</span></div>';
+			html += '<div class="wrongResponse"><h1>' + draggableUpperResponseTitle + '</h1><span class="textBody">' + draggableUpperResponseBody + '</span></div>';
+			
+                
+            }
 			html += '</li>';
 
 			$('.gallery').append(html);
+            
+
+            // need to be able to hide tile then animate back into existence
 			$('#' + draggableID).draggable({
+                appendTo: 'body',
 				cursor : "move",
+                cursorAt: {top:0, left: 100},
 				helper : "clone",
-				revert : "invalid"
+				revert : "invalid",
+                start: function startDraggable(e){
+                    //hide original while dragging
+                    dragtarget = e.target.id;
+                    $('#'+dragtarget).animate({
+                      opacity: 0
+                    },400);
+                    // starting over so reset to false
+                    dropCorrect = false;
+                },
+                stop: function stopDraggable(){
+                    // re-show original when stop dragging if it was invalid
+                    if(dropCorrect == false){
+                        $('#'+dragtarget).animate({
+                          opacity: 1
+                        },400);
+                    } else {
+                     
+                    }
+                }
 			});
 		});
 		$('.correctResponse').css('display', 'none');
@@ -131,20 +219,34 @@ $(document).ready(function init_interactive() {
 					correctAnswer(ui.draggable.find('div.correctResponse'));
 					
 					// delete image
-					ui.draggable.fadeOut();
-					
 					// copy image to dropzone and shrink
 					var $list = $("ul", $dropzone_upper).length ? $("ul", $dropzone_upper) : $("<ul class='gallery gallery-upper ui-helper-reset'/>").appendTo($dropzone_upper);
-					ui.draggable.clone().appendTo($list);
+					var id = ui.draggable[0].id;
+                    console.log(ui.draggable);
+                    var cloned = ui.draggable;
+                    cloned.clone().attr('id',id+'_1').appendTo($list);
+					ui.draggable.remove();
+                    console.log('removed original '+id);
+                    $('#'+id+'_1').animate({
+                      opacity: 1
+                    },400);
+                    dropCorrect = true;
+                    console.log('fadein cloned '+id+'_1');
 					$('.gallery-upper').find('li:last').animate({
-							width : "93px",
+							width : "50px",
 							fontSize: "12px",
 						}).find("img").animate({
-							height : "75px"
+							height : "50px"
 						});
 				} else {
 					//wrong
 					$('#wrongAudio').get(0).play();
+                    
+                    dropCorrect = false;
+					ui.draggable.animate({
+                      opacity: 1
+                    },400);
+                    
 					wrongAnswer(ui.draggable.find('div.wrongResponse'));
 				}
 				checkFinished();
@@ -162,18 +264,32 @@ $(document).ready(function init_interactive() {
 					correctAnswer(ui.draggable.find('div.correctResponse'));
 					
 					// delete image
-					ui.draggable.fadeOut();
 					// copy image to dropzone and shrink
 					var $list = $("ul", $dropzone_lower).length ? $("ul", $dropzone_lower) : $("<ul class='gallery gallery-lower ui-helper-reset'/>").appendTo($dropzone_lower);
-					ui.draggable.clone().appendTo($list);
+					var id = ui.draggable[0].id;
+                    console.log(ui.draggable);
+                    var cloned = ui.draggable;
+                    cloned.clone().attr('id',id+'_1').appendTo($list);
+					ui.draggable.remove();
+                    console.log('removed original '+id);
+                    $('#'+id+'_1').animate({
+                      opacity: 1
+                    },400);
+                    dropCorrect = true;
+                    console.log('fadein cloned '+id+'_1');
 					$('.gallery-lower').find('li:last').animate({
-							width : "93px",
+							width : "50px",
 							fontSize: "12px",
 						}).find("img").animate({
-							height : "75px"
+				            height : "50px"
 						});
 				} else {
 					//wrong
+                    
+                    dropCorrect = false;
+					ui.draggable.animate({
+                      opacity: 1
+                    },400);
 					$('#wrongAudio').get(0).play();
 					wrongAnswer(ui.draggable.find('div.wrongResponse'));
 				}
@@ -187,8 +303,14 @@ $(document).ready(function init_interactive() {
 		function correctAnswer($response) {
 			// populate wrong feedback text
 			$('div.response').empty();
-			$response.clone().appendTo('div.response');
-			$("div.response div.correctResponse").css('display', 'inline').find('h1').css("color", "#599156");
+         
+            var response_content = $($response).find('span.textBody').html();
+            var response_title = $($response).find('h1').html();
+
+            $('div.response').html(response_content);
+            $('div.response').dialog( "option", "title", response_title );
+            $( "div.response" ).dialog("open");
+            
 			$galleryCount--;
 			//score
 			totalScore=totalScore+25;
@@ -201,10 +323,14 @@ $(document).ready(function init_interactive() {
 		function wrongAnswer($response) {
 			// populate wrong feedback text
 			$('div.response').empty();
-			$response.clone().appendTo('div.response');
-			$("div.response div.wrongResponse").css('display', 'inline').effect("bounce", {
-				times : 3
-			}, 300);
+            
+            var response_content = $($response).find('span.textBody').html();
+            var response_title = $($response).find('h1').html();
+
+            $('div.response').html(response_content);
+            $('div.response').dialog( "option", "title", response_title );
+           $( "div.response" ).dialog("open");
+            
 			// descore
 			totalScore=totalScore-5;
 			$('span.score').text(totalScore);
@@ -215,8 +341,9 @@ $(document).ready(function init_interactive() {
 		 */
 		function checkFinished() {
 			if ($galleryCount == 0) {
-				$('div.response').empty();
+				//$('div.response').empty();
 				$('#successMessage').find('h2:first').show();
+                /*
 				$('#successMessage').dialog({
 					modal : true,
 					zIndex : 10,
@@ -226,6 +353,7 @@ $(document).ready(function init_interactive() {
 						}
 					}
 				});
+                */
 				
 				$('#finishedAudio').get(0).play();
 			}
