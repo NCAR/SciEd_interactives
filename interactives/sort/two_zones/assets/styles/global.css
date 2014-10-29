@@ -5,7 +5,7 @@
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
 }
-body {
+body,html {
     margin:0;
     padding:0;
 }
@@ -28,7 +28,10 @@ body {
     color:#fff;
 }
 .ui-widget-content.dropspot {
-    width: 500px;
+    width: 472px;
+}
+.dropzone_container {
+	width:472px;
 }
 .dropzone_container .droppable {
 	display:inline-block;
@@ -50,18 +53,20 @@ body {
 	margin:0;
 	padding:0;
 	vertical-align:top;
-    margin: 0 5px;
 }
 
-.dropzone_container {
-	width:472px;
-}
+
 .images_container{
-    width:408px;
+    width:408px;    
+    margin-right:5px;
 }
 .footer {
     position: absolute;
-        bottom:0;
+    bottom:20px;
+    text-align:center;
+}
+.footer button{
+	margin-bottom:5px;
 }
 .gallery li h5 { 
     cursor: move; 
@@ -95,14 +100,15 @@ h1.interactive_title {
 	margin:0;
 	padding:0;
 }
-.interactive_container_all .interactive_container_all, .interactive_container_all .interactive_container_all * {
-	box-sizing: border-box;
-	-moz-box-sizing: border-box; /* Firefox */
-}
+
 
 .interactive_container_all .clear {
 	clear: both;
 }
-.simulation {
+.simulation, .interactive_container_all, .interactive_container {
+    
     width:900px;
+    border:0;
+    margin:0;
+    padding:0;
 }

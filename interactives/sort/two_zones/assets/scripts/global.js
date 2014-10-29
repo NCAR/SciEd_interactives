@@ -27,7 +27,7 @@ $(document).ready(function init_interactive() {
                 width:500,
                 autoOpen: false,
                 resizable: false,
-                modal: true,
+                modal: false,
                 buttons: [
                     {
                         text: "OK",
@@ -38,9 +38,18 @@ $(document).ready(function init_interactive() {
                 ]
             });
     // if dialog is open and the body is clicked close the dialog
-    $('body').on('click',function onBodyClick(e){
+    $('body').on('mousedown',function onBodyClick(e){
         if($( "div.response" ).dialog('isOpen')){
             $( "div.response" ).dialog('close');       
+        }
+        if($( ".instructions_content" ).dialog('isOpen')){
+            $( ".instructions_content" ).dialog('close');       
+        }
+        if($( ".credits_content" ).dialog('isOpen')){
+            $( ".credits_content" ).dialog('close');       
+        }
+        if($( ".choose_level_content" ).dialog('isOpen')){
+            $( ".choose_level_content" ).dialog('close');       
         }
     });
 
@@ -73,8 +82,7 @@ $(document).ready(function init_interactive() {
 
 		// place credits
 		$('.credits_button').html(credits_title);
-		$('.credits_content').html(credits_body);
-		$(".credits_content").dialog({
+		$('.credits_content').html(credits_body).dialog({
 			autoOpen : false,
             title: credits_title,
 			height : credits_height,
@@ -85,24 +93,34 @@ $(document).ready(function init_interactive() {
 			$(".credits_content").dialog("open");
 		});
         
+        // place instructions button
+		$('.instructions_button').html(instructions_title);
+		$('.instructions_content').html(instructions_body).dialog({
+			autoOpen : true,
+            title: instructions_title,
+			height : instructions_height,
+			width : instructions_width,
+			modal : false,
+		});
+		$(".instructions_button").button().click(function click_instructions() {
+			$(".instructions_content").dialog("open");
+		});
+        
         // place levels button
 		$('.choose_level_button').html(choose_level_title);
-		$('.choose_level_content').html(choose_level_body);
-		$(".choose_level_content").dialog({
+		$('.choose_level_content').html(choose_level_body).dialog({
 			autoOpen : false,
             title: choose_level_title,
-			height : credits_height,
-			width : credits_width,
 			modal : true,
             width:"300px",
-            height:"auto"
+            height:"auto",
 		});
 		$(".choose_level_button").button().click(function click_choose_level() {
 			$(".choose_level_content").dialog("open");
 		});
             
         //init start over button
-        $(".start_over_button").button().click(function click_choose_level() {
+        $(".start_over_button").button().click(function click_restart() {
 			window.location.reload();
 		});
                 
@@ -173,8 +191,8 @@ $(document).ready(function init_interactive() {
 
             // need to be able to hide tile then animate back into existence
 			$('#' + draggableID).draggable({
-                containment: ".simulation", 
-                scroll: false,
+				containment: ".simulation", 
+				scroll: false,
                 appendTo: 'body',
 				cursor : "move",
                 cursorAt: {top:0, left: 100},
