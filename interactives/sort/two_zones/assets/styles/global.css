@@ -18,6 +18,9 @@ body {
 .ui-widget-content {
     border:none;
 }
+.ui-widget-content.draggable{
+    background:none;
+}
 .draggable .ui-widget-header {
     background:none;
     background-color: #336699;
@@ -62,6 +65,9 @@ body {
 }
 .gallery li h5 { 
     cursor: move; 
+}
+.gallery li {
+    vertical-align:top;
 }
 /*
  #gallery { float: left; width: 65%; min-height: 12em; }

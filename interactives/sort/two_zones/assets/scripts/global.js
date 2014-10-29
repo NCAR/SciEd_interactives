@@ -173,6 +173,8 @@ $(document).ready(function init_interactive() {
 
             // need to be able to hide tile then animate back into existence
 			$('#' + draggableID).draggable({
+                containment: ".simulation", 
+                scroll: false,
                 appendTo: 'body',
 				cursor : "move",
                 cursorAt: {top:0, left: 100},
@@ -233,10 +235,10 @@ $(document).ready(function init_interactive() {
                     dropCorrect = true;
                     console.log('fadein cloned '+id+'_1');
 					$('.gallery-upper').find('li:last').animate({
-							width : "50px",
+							width : "75px",
 							fontSize: "12px",
 						}).find("img").animate({
-							height : "50px"
+							height : "75px"
 						});
 				} else {
 					//wrong
@@ -278,10 +280,10 @@ $(document).ready(function init_interactive() {
                     dropCorrect = true;
                     console.log('fadein cloned '+id+'_1');
 					$('.gallery-lower').find('li:last').animate({
-							width : "50px",
+							width : "75px",
 							fontSize: "12px",
 						}).find("img").animate({
-				            height : "50px"
+				            height : "75px"
 						});
 				} else {
 					//wrong

@@ -134,8 +134,8 @@
                 "imgHeight": "100px",
 				"upperResponseTitle": "Correct!",
 				"upperResponseBody": "This a special type of picture of the Sun called a \"magnetogram\". It is a map of magnetic fields on the Sun. Black and white areas on a magnetogram show areas of different \"polarity\" of magnetic fields - like the North and South poles of a bar magnet. Sunspots have very, very strong magnetic fields. When there are lots of sunspots at solar max, a magnetogram has alternating patches of black and white - showing us the strong magnetic fields around sunspots.",
-				"WrongResponseTitle": "Sorry, try again.",
-				"WrongResponseBody": "This a special type of picture of the Sun called a \"magnetogram\". It is a map of magnetic fields on the Sun. Black and white areas on a magnetogram show areas of different \"polarity\" of magnetic fields - like the North and South poles of a bar magnet. Sunspots have very, very strong magnetic fields. When there are lots of sunspots at solar max, a magnetogram has alternating patches of black and white - showing us the strong magnetic fields around sunspots."
+				"lowerResponseTitle": "Sorry, try again.",
+				"lowerResponseBody": "This a special type of picture of the Sun called a \"magnetogram\". It is a map of magnetic fields on the Sun. Black and white areas on a magnetogram show areas of different \"polarity\" of magnetic fields - like the North and South poles of a bar magnet. Sunspots have very, very strong magnetic fields. When there are lots of sunspots at solar max, a magnetogram has alternating patches of black and white - showing us the strong magnetic fields around sunspots."
 			}, {
 				"TITLE": "H-alpha 2009",
 				"ID": "halpha_min",
