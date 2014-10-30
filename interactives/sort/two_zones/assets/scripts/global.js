@@ -73,7 +73,7 @@ $(document).ready(function init_interactive() {
 		var credits_body = data.SORT.PAGEINFO.credits_body;
 		var credits_width = data.SORT.PAGEINFO.credits_width;
 		var credits_height = data.SORT.PAGEINFO.credits_height;
-        var choose_level_title = data.SORT.PAGEINFO.choose_level_title;
+		var choose_level_title = data.SORT.PAGEINFO.choose_level_title;
         var choose_level_body = data.SORT.PAGEINFO.choose_level_body;
 
 		// place title
@@ -113,8 +113,7 @@ $(document).ready(function init_interactive() {
             title: choose_level_title,
 			modal : true,
             width:"300px",
-            height:"auto",
-		});
+       	});
 		$(".choose_level_button").button().click(function click_choose_level() {
 			$(".choose_level_content").dialog("open");
 		});
@@ -152,7 +151,10 @@ $(document).ready(function init_interactive() {
             var DropZoneImageHeight = this.DropZoneImageHeight;
             var DropZoneImageWidth = this.DropZoneImageWidth;
             
-			var style = 'background:no-repeat url('+DropZoneImage+') bottom center #DDDDDD;width:'+DropZoneImageWidth+';height:'+DropZoneImageHeight;
+            // just trying to fill the space
+            var zoneHeight = (600-25)/2+'px';
+            
+			var style = 'background:no-repeat url('+DropZoneImage+') bottom center #DDDDDD;width:'+DropZoneImageWidth+';height:'+zoneHeight;
 			var html = '<div style="'+style+'" class="ui-widget-content dropspot ' + DropZoneClass + '"><h4 class="ui-widget-header">' + DropZoneTitle + ' ' + DropZoneDescription + '</h4></div>';
 			$('.dropzone_container').append(html);
 		});

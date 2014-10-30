@@ -17,7 +17,7 @@
 			"credits_width": 550,
 			"credits_height": 450,
             "choose_level_title": "Choose Level",
-			"choose_level_body": "<p align=\"center\"><button class=\"level1\">Level 1</button><button class=\"level2\">Level 2</button></p>"
+			"choose_level_body": "<form action=\"#\"><fieldset><label for=\"level\">Select a level</label><select name=\"level\" id=\"level\"><option>Level 1</option><option>Level 2</option></select></fieldset></form>"
 		},
 		"DROPZONE": [
 			{

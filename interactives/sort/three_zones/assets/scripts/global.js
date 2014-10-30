@@ -151,8 +151,11 @@ $(document).ready(function init_interactive() {
 			var DropZoneImage = this.DropZoneImage;
             var DropZoneImageHeight = this.DropZoneImageHeight;
             var DropZoneImageWidth = this.DropZoneImageWidth;
+             
+            // just trying to fill the space
+            var zoneHeight = (600-15)/3+'px';
             
-			var style = 'background:no-repeat url('+DropZoneImage+') bottom center #DDDDDD;width:'+DropZoneImageWidth+';height:'+DropZoneImageHeight;
+			var style = 'background:no-repeat url('+DropZoneImage+') bottom center #DDDDDD;width:'+DropZoneImageWidth+';height:'+zoneHeight;
 			var html = '<div style="'+style+'" class="ui-widget-content dropspot ' + DropZoneClass + '"><h4 class="ui-widget-header">' + DropZoneTitle + ' ' + DropZoneDescription + '</h4></div>';
 			$('.dropzone_container').append(html);
 		});
