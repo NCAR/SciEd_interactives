@@ -33,7 +33,7 @@ body,html {
     display:block;
 }
 .dropzone_container {
-	width:472px;
+	width:487px;
 }
 .dropzone_container .droppable {
 	display:inline-block;
@@ -56,6 +56,16 @@ body,html {
 	padding:0;
 	vertical-align:top;
 }
+ form{
+	display:inline;
+}
+fieldset {
+	border: 0;
+}
+label {
+display:none;
+	margin: 30px 0 0 0;
+}
 
 
 .images_container{
@@ -64,14 +74,17 @@ body,html {
 }
 .footer {
     position: absolute;
+    margin-bottom:5px;
     bottom:20px;
     text-align:center;
+    width: 400px;
 }
 .footer button{
 	margin-bottom:5px;
 }
 .gallery li h5 { 
     cursor: move; 
+    font-size:0.8em;
 }
 .gallery li {
     vertical-align:top;

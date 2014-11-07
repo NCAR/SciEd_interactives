@@ -32,7 +32,7 @@ body,html {
     width: 472px;
 }
 .dropzone_container {
-	width:472px;
+	width:487px;
 }
 .dropzone_container .droppable {
 	display:inline-block;
@@ -73,14 +73,17 @@ display:none;
 }
 .footer {
     position: absolute;
+    margin-bottom:5px;
     bottom:20px;
     text-align:center;
+    width: 400px;
 }
 .footer button{
 	margin-bottom:5px;
 }
 .gallery li h5 { 
     cursor: move; 
+    font-size:0.8em;
 }
 .gallery li {
     vertical-align:top;

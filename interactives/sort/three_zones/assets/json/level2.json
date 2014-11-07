@@ -9,38 +9,38 @@
 			"finishedAudioMP3": "assets/audio/applause.mp3",
 			"finishedAudioOGG": "assets/audio/applause.ogg",
 			"instructions_title": "Instructions",
-			"instructions_body": "Drag each solar feature to the appropriate box on the right. The small images to your left are pictures of features on the Sun (such as sunspots and prominences) or regions of the Sun (such as the core and photosphere and corona). The pictures show various size features, from a few thousand miles across (such as sunspots) to more than a million miles (for example, the corona).",			
-			"instructions_width": 600,
-			"instructions_height": 300,
+			"instructions_body": "<p>Sort these pictures of features and parts of the Sun by <strong>temperature</strong>.</p><p>Each of the small pictures on the left shows some part of the Sun (such as the core or photosphere or corona) or some kind of solar feature (like sunspots or prominences). The pictures show various size features, from a few thousand miles across (such as sunspots) to more than a million miles (for example, the corona).</p><p>Decide <strong>how hot</strong> you think each part or feature is. Then <strong>drag</strong> the small picture of that feature or part into the <strong>area on the right</strong> with the matching temperature range.</p><p>If you don't know how hot something is, take a guess! <strong>Hints</strong> will help you discover which places and features are the hottest.</p><p>Have you tried the <strong>other level</strong> of the Sun Sorting Game yet? Click the <strong>Choose Level</strong> button to try sorting photos of the Sun into Solar Max and Solar Min groups.</p>",			
+			"instructions_width": 650,
+			"instructions_height": 480,
 			"credits_title": "Credits",
-			"credits_body": "<p align=\"center\"><img src=\"assets/images/scied_logo_500x55.png\" width=\"500px\"/></p><p>This interactive was created by the <strong>UCAR Center for Science Education</strong>.</p><p>Software design by <strong>Ryan C. McVeigh</strong> and <strong>Randy M. Russell</strong>. Programming by Ryan McVeigh. Text, image selection and educational design by Randy Russell.</p><p>Images provided by NCAR High Altitude Observatory, SOHO (NASA/ESA), Big Bear Solar Observatory, Yohkoh - NASA and the Institute of Space and Astronautical Science (Japan), and Kanzelhoehe Solar Observatory.</p><p>&copy; 2012 University Corporation for Atmospheric Research</p>",
+			"credits_body": "<p align=\"center\"><img src=\"assets/images/scied_logo_500x55.png\" width=\"500px\"/></p><p>This interactive was created by the <strong>UCAR Center for Science Education</strong>.</p><p>Software design by <strong>Randy M. Russell</strong> and <strong>Sharon Clark</strong>. Programming by Sharon Clark. Text, image selection and educational design by Randy Russell. Artwork by <strong>Lisa Gardiner</strong>.</p><p>Images provided by NCAR High Altitude Observatory, SOHO (NASA/ESA), Big Bear Solar Observatory, Yohkoh - NASA and the Institute of Space and Astronautical Science (Japan), and Kanzelhoehe Solar Observatory.</p><p>&copy; 2014 University Corporation for Atmospheric Research</p>",
 			"credits_width": 550,
 			"credits_height": 450,
             "choose_level_title": "Choose Level",
-			"choose_level_body": "<p align=\"center\"><button class=\"level1\">Level 1</button><button class=\"level2\">Level 2</button></p>"
+			"choose_level_body": "<form action=\"#\"><fieldset><label for=\"level\">Select a level</label><select name=\"level\" id=\"level\"><option>Level 1</option><option selected=\"selected\">Level 2</option></select></fieldset></form>"
 		},
 		"DROPZONE": [
 			{
 				"DropZoneClass": "upper",
 				"DropZoneTitle": "Hottest",
 				"DropZoneDescription": "over 1,000,000° C (1,800,000°+ F)",
-				"DropZoneImage": "assets/images/sun_hottest.png",
-                "DropZoneImageWidth": "472px",
-                "DropZoneImageHeight": "181px"
+				"DropZoneImage": "assets/images/dropzone_hottest_485x165.jpg",
+                "DropZoneImageWidth": "485px",
+                "DropZoneImageHeight": "165px"
 			}, {
 				"DropZoneClass": "middle",
 				"DropZoneTitle": "Hotter",
 				"DropZoneDescription": "10,000-50,000° C (18,000-90,000° F)",
-				"DropZoneImage": "assets/images/sun_hotter.png",
-                "DropZoneImageWidth": "472px",
-                "DropZoneImageHeight": "181px"
+				"DropZoneImage": "assets/images/dropzone_hotter_485x165.jpg",
+                "DropZoneImageWidth": "485px",
+                "DropZoneImageHeight": "165px"
 			}, {
 				"DropZoneClass": "lower",
 				"DropZoneTitle": "Hot",
 				"DropZoneDescription": "2,000-6,000° Celsius (3,600-10,800° F)",
-				"DropZoneImage": "assets/images/sun_hot.png",
-                "DropZoneImageWidth": "472px",
-                "DropZoneImageHeight": "181px"
+				"DropZoneImage": "assets/images/dropzone_hot_485x165.jpg",
+                "DropZoneImageWidth": "485px",
+                "DropZoneImageHeight": "165px"
 			}
 		],
 		"DRAGGABLE": [

@@ -48,9 +48,6 @@ $(document).ready(function init_interactive() {
         if($( ".credits_content" ).dialog('isOpen')){
             $( ".credits_content" ).dialog('close');       
         }
-        if($( ".choose_level_content" ).dialog('isOpen')){
-            $( ".choose_level_content" ).dialog('close');       
-        }
     });
 
 	/**
@@ -114,6 +111,21 @@ $(document).ready(function init_interactive() {
 			modal : true,
             width:"300px",
        	});
+       	// instrument level buttons
+       	$('.choose_level_content form select').on('change',function selectLevelChange(e){
+       		var chosenLevel = $(this).find("option:selected").text();
+       		
+       		switch(chosenLevel){
+       			case 'Level 1':
+       				window.location = 'https://scied.ucar.edu/sites/default/files/interactives/sort/sun/two_zones/index.html';
+       				break;
+       			case 'Level 2':
+       				window.location = 'https://scied.ucar.edu/sites/default/files/interactives/sort/sun/three_zones/index.html';
+       				break;
+       		}
+       		
+       	});
+       	
 		$(".choose_level_button").button().click(function click_choose_level() {
 			$(".choose_level_content").dialog("open");
 		});
@@ -152,9 +164,9 @@ $(document).ready(function init_interactive() {
             var DropZoneImageWidth = this.DropZoneImageWidth;
             
             // just trying to fill the space
-            var zoneHeight = (600-25)/2+'px';
+            var zoneHeight = Math.floor((600-25)/2);
             
-			var style = 'background:no-repeat url('+DropZoneImage+') bottom center #DDDDDD;width:'+DropZoneImageWidth+';height:'+zoneHeight;
+			var style = 'background:no-repeat url('+DropZoneImage+') bottom center #FFFFFF;width:'+DropZoneImageWidth+';height:'+zoneHeight+'px;';
 			var html = '<div style="'+style+'" class="ui-widget-content dropspot ' + DropZoneClass + '"><h4 class="ui-widget-header">' + DropZoneTitle + ' ' + DropZoneDescription + '</h4></div>';
 			$('.dropzone_container').append(html);
 		});
@@ -197,7 +209,7 @@ $(document).ready(function init_interactive() {
 				scroll: false,
                 appendTo: 'body',
 				cursor : "move",
-                cursorAt: {top:0, left: 100},
+                cursorAt: {top:50, left: 50},
 				helper : "clone",
 				revert : "invalid",
                 start: function startDraggable(e){
