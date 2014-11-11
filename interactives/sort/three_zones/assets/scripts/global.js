@@ -182,6 +182,7 @@ $(document).ready(function init_interactive() {
 			var draggableID = this.ID;
 			var draggableCorrectDiv = this.correctDiv;
 			var draggableWrongDiv = this.wrongDiv;
+			var draggableCloseDiv = this.closeDiv;
 			var draggableImage = this.IMAGE;
 			var draggableUpperResponseTitle = this.upperResponseTitle;
 			var draggableUpperResponseBody = this.upperResponseBody;
@@ -193,22 +194,34 @@ $(document).ready(function init_interactive() {
             var imgHeight = this.imgHeight;
             var imgWidth = this.imgWidth;
 
-			var html = '<li class="ui-widget-content ui-corner-tr draggable ' + draggableCorrectDiv + ' wrong-'+draggableWrongDiv+'" id="' + draggableID + '"><h5 class="ui-widget-header">' + draggableTitle + '</h5>';
+			var html = '<li class="ui-widget-content ui-corner-tr draggable ' + draggableCorrectDiv + ' close-'+draggableCloseDiv+'" id="' + draggableID + '"><h5 class="ui-widget-header">' + draggableTitle + '</h5>';
 			html += '<img src=' + draggableImage + ' alt="' + draggableTitle + '" title="' + draggableTitle + '"/>';
             
             if(draggableCorrectDiv == 'upper'){
                 html += '<div class="correctResponse"><h1>' + draggableUpperResponseTitle + '</h1><span class="textBody">' + draggableUpperResponseBody + '</span></div>';
-				html += '<div class="wrongResponse"><h1>' + draggableLowerResponseTitle + '</h1><span class="textBody">' + draggableLowerResponseBody + '</span></div>';
-				html += '<div class="closeResponse"><h1>' + draggableMiddleResponseTitle + '</h1><span class="textBody">' + draggableMiddleResponseBody + '</span></div>';
 			} else if(draggableCorrectDiv == 'middle'){
 				html += '<div class="correctResponse"><h1>' + draggableMiddleResponseTitle + '</h1><span class="textBody">' + draggableMiddleResponseBody + '</span></div>';
-				html += '<div class="wrongResponse"><h1>' + draggableLowerResponseTitle + '</h1><span class="textBody">' + draggableLowerResponseBody + '</span></div>';
-				html += '<div class="closeResponse"><h1>' + draggableUpperResponseTitle + '</h1><span class="textBody">' + draggableUpperResponseBody + '</span></div>';
 			} else if(draggableCorrectDiv == 'lower') {
                 html += '<div class="correctResponse"><h1>' + draggableLowerResponseTitle + '</h1><span class="textBody">' + draggableLowerResponseBody + '</span></div>';
-				html += '<div class="wrongResponse"><h1>' + draggableUpperResponseTitle + '</h1><span class="textBody">' + draggableUpperResponseBody + '</span></div>'; 
-				html += '<div class="closeResponse"><h1>' + draggableMiddleResponseTitle + '</h1><span class="textBody">' + draggableMiddleResponseBody + '</span></div>';  
             }
+            if(draggableWrongDiv == 'upper'){
+                html += '<div class="wrongResponse"><h1>' + draggableUpperResponseTitle + '</h1><span class="textBody">' + draggableUpperResponseBody + '</span></div>';
+			} else if(draggableWrongDiv == 'middle'){
+				html += '<div class="wrongResponse"><h1>' + draggableMiddleResponseTitle + '</h1><span class="textBody">' + draggableMiddleResponseBody + '</span></div>';
+			} else if(draggableWrongDiv == 'lower') {
+                html += '<div class="wrongResponse"><h1>' + draggableLowerResponseTitle + '</h1><span class="textBody">' + draggableLowerResponseBody + '</span></div>';
+            }
+            
+            if(draggableCloseDiv == 'upper'){
+                html += '<div class="closeResponse"><h1>' + draggableUpperResponseTitle + '</h1><span class="textBody">' + draggableUpperResponseBody + '</span></div>';
+			} else if(draggableCloseDiv == 'middle'){
+				html += '<div class="closeResponse"><h1>' + draggableMiddleResponseTitle + '</h1><span class="textBody">' + draggableMiddleResponseBody + '</span></div>';
+			} else if(draggableCloseDiv == 'lower') {
+                html += '<div class="closeResponse"><h1>' + draggableLowerResponseTitle + '</h1><span class="textBody">' + draggableLowerResponseBody + '</span></div>';
+            }
+            
+            
+            
 			html += '</li>';
 
 			$('.gallery').append(html);
@@ -260,7 +273,7 @@ $(document).ready(function init_interactive() {
 		 */
 		$dropzone_upper.droppable({
 			drop : function droppable_upper(event, ui) {
-				if(ui.draggable.is('.wrong-upper')){
+				if(ui.draggable.is('.close-upper')){
 					// close but still wrong
 					$('#wrongAudio').get(0).play();
 					closeAnswer(ui.draggable.find('div.closeResponse'));
@@ -308,7 +321,7 @@ $(document).ready(function init_interactive() {
 		 */
 		$dropzone_middle.droppable({
 			drop : function droppable_middle(event, ui) {
-				if(ui.draggable.is('.wrong-middle')){
+				if(ui.draggable.is('.close-middle')){
 					// close but still wrong
 					$('#wrongAudio').get(0).play();
 					closeAnswer(ui.draggable.find('div.closeResponse'));
@@ -355,7 +368,7 @@ $(document).ready(function init_interactive() {
 		 */
 		$dropzone_lower.droppable({
 			drop : function droppable_lower(event, ui) {
-				if(ui.draggable.is('.lower-upper')){
+				if(ui.draggable.is('.close-lower')){
 					// close but still wrong
 					$('#wrongAudio').get(0).play();
 					closeAnswer(ui.draggable.find('div.closeResponse'));
