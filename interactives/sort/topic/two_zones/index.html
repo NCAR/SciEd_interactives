@@ -4,19 +4,19 @@
 		<title></title>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script>
-			window.jQuery || document.write('<script src="scripts/jquery/jquery-1.11.0.min.js"><\/script>')
+			window.jQuery || document.write('<script src="../../assets/scripts/jquery/jquery-1.11.0.min.js"><\/script>')
 		</script>
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 		<script>
-			window.jQuery.ui || document.write('<script src="scripts/jquery/jquery-ui-1.10.4.custom.min.js"><\/script>')
+			window.jQuery.ui || document.write('<script src="../../assets/scripts/jquery/jquery-ui-1.10.4.custom.min.js"><\/script>')
 		</script>
-		<script src="assets/scripts/jquery.ui.touch-punch.min.js"></script>
+		<script src="../../assets/scripts/jquery.ui.touch-punch.min.js"></script>
 		<!-- DECLARE YOUR VARIABLES HERE!!!! -->
 		<script type="text/javascript">
-			var $jsonFile = 'assets/json/level2.json';
+			var $jsonFile = 'assets/json/level1.json';
 		</script>
-		<link rel="stylesheet" href="assets/theme/jquery-ui-1.10.4.custom/css/custom-theme/jquery-ui-1.10.4.custom.min.css" />
-		<link rel="stylesheet" type="text/css" href="assets/styles/global.css">
+		<link rel="stylesheet" href="../../assets/theme/jquery-ui-1.10.4.custom/css/custom-theme/jquery-ui-1.10.4.custom.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../assets/styles/global.css">
 	</head>
 	<body>
 		<div class="simulation">
@@ -31,7 +31,7 @@
 					        <div id="successMessage">
 				    	       <h2>You did it!</h2><h2>Your Score is <span class="score">0</span> points.</h2>
 				            </div>
-                            <button class="instructions_button"></button>
+                   	 		<button class="instructions_button"></button>
 					        <div class="instructions_content"></div>
 					        <button class="choose_level_button"></button>
 					        <div class="choose_level_content"></div><br/>
@@ -49,7 +49,8 @@
 		</div>
 		<div class="audio"></div>
 		
-		<script src="assets/scripts/global.js"></script>
-		<!--//script src="assets/scripts/ga_tracking.js"></script//-->
+		<script src="../../assets/scripts/global.js"></script>
+		<script src="../assets/scripts/level_select.js"></script>
+		<!--//script src="../../assets/scripts/ga_tracking.js"></script//-->
 	</body>
 </html>

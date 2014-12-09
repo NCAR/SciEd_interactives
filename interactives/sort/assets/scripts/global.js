@@ -107,25 +107,12 @@ $(document).ready(function init_interactive() {
 			title : choose_level_title,
 			modal : true,
 			width : "300px",
+			height : "auto",
 		});
-		// instrument level buttons
-		$('.choose_level_content form select').on('change', function selectLevelChange(e) {
-			var chosenLevel = $(this).find("option:selected").text();
-
-			switch(chosenLevel) {
-			case 'Level 1':
-				window.location = 'https://scied.ucar.edu/sites/default/files/interactives/sort/sun/two_zones/index.html';
-				break;
-			case 'Level 2':
-				window.location = 'https://scied.ucar.edu/sites/default/files/interactives/sort/sun/three_zones/index.html';
-				break;
-			}
-
-		});
-
 		$(".choose_level_button").button().click(function click_choose_level() {
 			$(".choose_level_content").dialog("open");
 		});
+
 
 		//init start over button
 		$(".start_over_button").button().click(function click_restart() {
@@ -160,7 +147,7 @@ $(document).ready(function init_interactive() {
 			var DropZoneImageWidth = this.DropZoneImageWidth;
 
 			// just trying to fill the space
-			var zoneHeight = Math.floor((600 - 25) / 2);
+			var zoneHeight = Math.floor((600 - 15) / 3);
 
 			var style = 'background:no-repeat url(' + DropZoneImage + ') bottom center #FFFFFF;width:' + DropZoneImageWidth + ';height:' + zoneHeight + 'px;';
 			var html = '<div style="' + style + '" class="ui-widget-content dropspot ' + DropZoneClass + '"><h4 class="ui-widget-header">' + DropZoneTitle + ' ' + DropZoneDescription + '</h4></div>';
@@ -174,28 +161,44 @@ $(document).ready(function init_interactive() {
 			var draggableTitle = this.TITLE;
 			var draggableID = this.ID;
 			var draggableCorrectDiv = this.correctDiv;
+			var draggableWrongDiv = this.wrongDiv;
+			var draggableCloseDiv = this.closeDiv;
 			var draggableImage = this.IMAGE;
 			var draggableUpperResponseTitle = this.upperResponseTitle;
 			var draggableUpperResponseBody = this.upperResponseBody;
+			var draggableMiddleResponseTitle = this.middleResponseTitle;
+			var draggableMiddleResponseBody = this.middleResponseBody;
 			var draggableLowerResponseTitle = this.lowerResponseTitle;
 			var draggableLowerResponseBody = this.lowerResponseBody;
 
 			var imgHeight = this.imgHeight;
 			var imgWidth = this.imgWidth;
 
-			var html = '<li class="ui-widget-content ui-corner-tr draggable ' + draggableCorrectDiv + '" id="' + draggableID + '"><h5 class="ui-widget-header">' + draggableTitle + '</h5>';
+			var html = '<li class="ui-widget-content ui-corner-tr draggable ' + draggableCorrectDiv + ' close-' + draggableCloseDiv + '" id="' + draggableID + '"><h5 class="ui-widget-header">' + draggableTitle + '</h5>';
 			html += '<img src=' + draggableImage + ' alt="' + draggableTitle + '" title="' + draggableTitle + '"/>';
 
 			if (draggableCorrectDiv == 'upper') {
 				html += '<div class="correctResponse"><h1>' + draggableUpperResponseTitle + '</h1><span class="textBody">' + draggableUpperResponseBody + '</span></div>';
-				html += '<div class="wrongResponse"><h1>' + draggableLowerResponseTitle + '</h1><span class="textBody">' + draggableLowerResponseBody + '</span></div>';
-
-			} else {
+			} else if (draggableCorrectDiv == 'middle') {
+				html += '<div class="correctResponse"><h1>' + draggableMiddleResponseTitle + '</h1><span class="textBody">' + draggableMiddleResponseBody + '</span></div>';
+			} else if (draggableCorrectDiv == 'lower') {
 				html += '<div class="correctResponse"><h1>' + draggableLowerResponseTitle + '</h1><span class="textBody">' + draggableLowerResponseBody + '</span></div>';
-				html += '<div class="wrongResponse"><h1>' + draggableUpperResponseTitle + '</h1><span class="textBody">' + draggableUpperResponseBody + '</span></div>';
-
 			}
-			html += '</li>';
+			if (draggableWrongDiv == 'upper') {
+				html += '<div class="wrongResponse"><h1>' + draggableUpperResponseTitle + '</h1><span class="textBody">' + draggableUpperResponseBody + '</span></div>';
+			} else if (draggableWrongDiv == 'middle') {
+				html += '<div class="wrongResponse"><h1>' + draggableMiddleResponseTitle + '</h1><span class="textBody">' + draggableMiddleResponseBody + '</span></div>';
+			} else if (draggableWrongDiv == 'lower') {
+				html += '<div class="wrongResponse"><h1>' + draggableLowerResponseTitle + '</h1><span class="textBody">' + draggableLowerResponseBody + '</span></div>';
+			}
+
+			if (draggableCloseDiv == 'upper') {
+				html += '<div class="closeResponse"><h1>' + draggableUpperResponseTitle + '</h1><span class="textBody">' + draggableUpperResponseBody + '</span></div>';
+			} else if (draggableCloseDiv == 'middle') {
+				html += '<div class="closeResponse"><h1>' + draggableMiddleResponseTitle + '</h1><span class="textBody">' + draggableMiddleResponseBody + '</span></div>';
+			} else if (draggableCloseDiv == 'lower') {
+				html += '<div class="closeResponse"><h1>' + draggableLowerResponseTitle + '</h1><span class="textBody">' + draggableLowerResponseBody + '</span></div>';
+			}
 
 			html += '</li>';
 			a_drag.push(html);
@@ -240,9 +243,11 @@ $(document).ready(function init_interactive() {
 
 		$('.correctResponse').css('display', 'none');
 		$('.wrongResponse').css('display', 'none');
+		$('.closeResponse').css('display', 'none');
 
 		var $gallery = $("#gallery");
 		var $dropzone_upper = $(".dropzone_container .upper");
+		var $dropzone_middle = $(".dropzone_container .middle");
 		var $dropzone_lower = $(".dropzone_container .lower");
 		var $galleryCount = $("ul.gallery").find('li').length;
 
@@ -251,7 +256,11 @@ $(document).ready(function init_interactive() {
 		 */
 		$dropzone_upper.droppable({
 			drop : function droppable_upper(event, ui) {
-				if (ui.draggable.is('.upper')) {
+				if (ui.draggable.is('.close-upper')) {
+					// close but still wrong
+					$('#wrongAudio').get(0).play();
+					closeAnswer(ui.draggable.find('div.closeResponse'));
+				} else if (ui.draggable.is('.upper')) {
 					//correct
 					$('#correctAudio').get(0).play();
 					correctAnswer(ui.draggable.find('div.correctResponse'));
@@ -290,13 +299,63 @@ $(document).ready(function init_interactive() {
 				checkFinished();
 			}
 		});
+		/*
+		 * make the middle zone droppable and handle interactions
+		 */
+		$dropzone_middle.droppable({
+			drop : function droppable_middle(event, ui) {
+				if (ui.draggable.is('.close-middle')) {
+					// close but still wrong
+					$('#wrongAudio').get(0).play();
+					closeAnswer(ui.draggable.find('div.closeResponse'));
+				} else if (ui.draggable.is('.middle')) {
+					//correct
+					$('#correctAudio').get(0).play();
+					correctAnswer(ui.draggable.find('div.correctResponse'));
 
+					// delete image
+					// copy image to dropzone and shrink
+					var $list = $("ul", $dropzone_middle).length ? $("ul", $dropzone_middle) : $("<ul class='gallery gallery-middle ui-helper-reset'/>").appendTo($dropzone_middle);
+					var id = ui.draggable[0].id;
+					console.log(ui.draggable);
+					var cloned = ui.draggable;
+					cloned.clone().attr('id', id + '_1').appendTo($list);
+					ui.draggable.remove();
+					console.log('removed original ' + id);
+					$('#' + id + '_1').animate({
+						opacity : 1
+					}, 400);
+					dropCorrect = true;
+					console.log('fadein cloned ' + id + '_1');
+					$('.gallery-middle').find('li:last').animate({
+						width : "75px",
+						fontSize : "12px",
+					}).find("img").animate({
+						height : "75px"
+					});
+				} else {
+					//wrong
+
+					dropCorrect = false;
+					ui.draggable.animate({
+						opacity : 1
+					}, 400);
+					$('#wrongAudio').get(0).play();
+					wrongAnswer(ui.draggable.find('div.wrongResponse'));
+				}
+				checkFinished();
+			}
+		});
 		/*
 		 * make the lower zone droppable and handle interactions
 		 */
 		$dropzone_lower.droppable({
 			drop : function droppable_lower(event, ui) {
-				if (ui.draggable.is('.lower')) {
+				if (ui.draggable.is('.close-lower')) {
+					// close but still wrong
+					$('#wrongAudio').get(0).play();
+					closeAnswer(ui.draggable.find('div.closeResponse'));
+				} else if (ui.draggable.is('.lower')) {
 					//correct
 					$('#correctAudio').get(0).play();
 					correctAnswer(ui.draggable.find('div.correctResponse'));
@@ -356,6 +415,25 @@ $(document).ready(function init_interactive() {
 		}
 
 		/*
+		 * answer is close, so give notice
+		 */
+		function closeAnswer($response) {
+			// populate close feedback text
+			$('div.response').empty();
+
+			var response_content = $($response).find('span.textBody').html();
+			var response_title = $($response).find('h1').html();
+
+			$('div.response').html(response_content);
+			$('div.response').dialog("option", "title", response_title);
+			$("div.response").dialog("open");
+
+			// descore
+			//totalScore=totalScore-5;
+			//$('span.score').text(totalScore);
+		}
+
+		/*
 		 * answer is wrong, so deduct score and give notice
 		 */
 		function wrongAnswer($response) {
@@ -398,7 +476,7 @@ $(document).ready(function init_interactive() {
 		}
 
 	});
-	
+
 	/**
 	 * Randomize array element order in-place.
 	 * Using Fisher-Yates shuffle algorithm.
@@ -413,4 +491,5 @@ $(document).ready(function init_interactive() {
 		}
 		return array;
 	}
+
 });
