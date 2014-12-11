@@ -146,10 +146,7 @@ $(document).ready(function init_interactive() {
 			var DropZoneImageHeight = this.DropZoneImageHeight;
 			var DropZoneImageWidth = this.DropZoneImageWidth;
 
-			// just trying to fill the space
-			var zoneHeight = Math.floor((600 - 15) / 3);
-
-			var style = 'background:no-repeat url(' + DropZoneImage + ') bottom center #FFFFFF;width:' + DropZoneImageWidth + ';height:' + zoneHeight + 'px;';
+			var style = 'background:no-repeat url(' + DropZoneImage + ') bottom center #FFFFFF;width:' + DropZoneImageWidth + ';height:' + DropZoneImageHeight;
 			var html = '<div style="' + style + '" class="ui-widget-content dropspot ' + DropZoneClass + '"><h4 class="ui-widget-header">' + DropZoneTitle + ' ' + DropZoneDescription + '</h4></div>';
 			$('.dropzone_container').append(html);
 		});
