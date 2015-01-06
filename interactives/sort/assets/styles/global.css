@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:400,400italic,500,700&subset=latin");
+* {
+	font-family: 'Ubuntu',Arial,sans-serif;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+body,html {
+    margin:0;
+    padding:0;
+}
+
+/* Jquery UI overrides */
+.ui-widget-header {
+    margin: 0;
+    padding: 5px;
+}
+.ui-widget-content {
+    border:none;
+}
+.ui-widget-content.draggable{
+    background:none;
+}
+.draggable .ui-widget-header {
+    background:none;
+    background-color: #336699;
+    border:1px solid #0D3F6F;
+    color:#fff;
+}
+.ui-widget-content.dropspot {
+    width: 472px;
+    height:100px;
+    display:block;
+}
+.dropzone_container {
+	width:487px;
+}
+.dropzone_container .droppable {
+	display:inline-block;
+}
+.draggable {
+	display:inline-block;
+	cursor: move;
+    text-align: center;
+    width:100px;
+    margin-left:1px;
+    margin-right:1px;
+}
+.dropspot {
+
+}
+.dropzone_container,
+.images_container {
+	float:left;
+	margin:0;
+	padding:0;
+	vertical-align:top;
+}
+ form{
+	display:inline;
+}
+fieldset {
+	border: 0;
+}
+label {
+display:none;
+	margin: 30px 0 0 0;
+}
+
+
+.images_container{
+    width:408px;    
+    margin-right:5px;
+}
+.footer {
+    position: absolute;
+    margin-bottom:5px;
+    bottom:20px;
+    text-align:center;
+    width: 400px;
+}
+.footer button{
+	margin-bottom:5px;
+}
+.gallery li h5 { 
+    cursor: move; 
+    font-size:0.8em;
+}
+.gallery li {
+    vertical-align:top;
+}
+/*
+ #gallery { float: left; width: 65%; min-height: 12em; }
+.gallery.custom-state-active { background: #eee; }
+.gallery li { float: left; width: 96px; padding: 0.4em; margin: 0 0.4em 0.4em 0; text-align: center; }
+.gallery li a { float: right; }
+.gallery li a.ui-icon-zoomin { float: left; }
+.gallery li img { width: 100%; cursor: move; }
+*/
+h1.interactive_title {
+   /* background-color: #336699;
+    border:1px solid #0D3F6F;
+    color:#fff;*/
+    color:#000;
+    font-size: 1.4em;
+    margin:0 0  1px 0;
+    padding:5px;
+}
+.interactive_container_all{
+	background-color:#fff;
+    margin:0;
+    padding:0;
+}
+.interactive_container {
+	margin:0;
+	padding:0;
+}
+
+
+.interactive_container_all .clear {
+	clear: both;
+}
+.simulation, .interactive_container_all, .interactive_container {
+    
+    width:900px;
+    border:0;
+    margin:0;
+    padding:0;
+}
