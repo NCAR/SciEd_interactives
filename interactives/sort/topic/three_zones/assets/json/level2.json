@@ -26,21 +26,21 @@
 				"DropZoneDescription": "over 1,000,000° C (1,800,000°+ F)",
 				"DropZoneImage": "../assets/images/dropzone_hottest_485x165.jpg",
                 "DropZoneImageWidth": "489px",
-                "DropZoneImageHeight": "165px"
+                "DropZoneImageHeight": "196px"
 			}, {
 				"DropZoneClass": "middle",
 				"DropZoneTitle": "Hotter",
 				"DropZoneDescription": "10,000-50,000° C (18,000-90,000° F)",
 				"DropZoneImage": "../assets/images/dropzone_hotter_485x165.jpg",
                 "DropZoneImageWidth": "489px",
-                "DropZoneImageHeight": "165px"
+                "DropZoneImageHeight": "196px"
 			}, {
 				"DropZoneClass": "lower",
 				"DropZoneTitle": "Hot",
 				"DropZoneDescription": "2,000-6,000° Celsius (3,600-10,800° F)",
 				"DropZoneImage": "../assets/images/dropzone_hot_485x165.jpg",
                 "DropZoneImageWidth": "489px",
-                "DropZoneImageHeight": "165px"
+                "DropZoneImageHeight": "196px"
 			}
 		],
 		"DRAGGABLE": [

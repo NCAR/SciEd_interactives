@@ -26,14 +26,14 @@
 				"DropZoneDescription": "(many sunspots)",
 				"DropZoneImage": "../assets/images/dropzone_solar_max_485x255.jpg",
                 "DropZoneImageWidth": "489px",
-                "DropZoneImageHeight": "255px"
+                "DropZoneImageHeight": "286px"
 			}, {
 				"DropZoneClass": "lower",
 				"DropZoneTitle": "Solar Minimum",
 				"DropZoneDescription": "(few or no sunspots)",
 				"DropZoneImage": "../assets/images/dropzone_solar_min_485x255.jpg",
                 "DropZoneImageWidth": "489px",
-                "DropZoneImageHeight": "255px"
+                "DropZoneImageHeight": "286px"
 			}
 		],
 		"DRAGGABLE": [
