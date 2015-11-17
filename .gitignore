@@ -19,3 +19,9 @@ interactives/compare/content
 interactives/compare/assets/scripts/jquery
 interactives/memory/assets/scripts/jquery
 interactives/sort/assets/scripts/jquery
+
+
+#exhibits template
+exhibits_template/script/jquery/*
+exhibits_template/images/*
+exhibits_template/videos/*
