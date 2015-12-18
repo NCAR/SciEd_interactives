@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" sizes="196x196" href="phaser_icon.png">
+	<title>Tree Rings</title>
+    <script src="libs/phaser.min.js"></script>
+    <script src="Boot.js"></script>
+    <script src="Preloader.js"></script>
+    <script src="StartMenu.js"></script>
+    <script src="Tree.js"></script>
+    <script src="Instructions.js"></script>
+    <script src="Game.js"></script>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #ffffff;
+		}
+	</style>
+</head>
+
+<body>
+    <div id="gameContainer"></div>
+    <script type="text/javascript">
+		window.onload = function(){
+			// new Game(width, height, renderer, parent, state, transparent, antialias, physicsConfig)
+			// http://phaser.io/docs/2.4.2/Phaser.Game.html
+			var game = new Phaser.Game(900, 500, Phaser.AUTO, 'gameContainer');
+			// The State Manager is responsible for loading, setting up and switching game states.
+			// http://phaser.io/docs/2.4.2/Phaser.StateManager.html#add
+			game.state.add('Boot', TreeRings.Boot);
+			game.state.add('Preloader', TreeRings.Preloader);
+			game.state.add('StartMenu', TreeRings.StartMenu);
+			game.state.add('Game', TreeRings.Game);
+			game.state.start('Boot');
+		}
+    </script>
+</body>
+</html>
