@@ -1,0 +1,13 @@
+<md-toolbar class="footer">
+    <div class="md-toolbar-tools">
+        <md-button ng-if="backButton" class="toolbar-button-left md-raised md-cornered" ng-click="goBack()">
+            <i class="material-icons toolbar-back-button">chevron_left</i>{{backButtonText}}
+        </md-button>
+        <span flex></span>
+        <h1 class="toolbar-text">{{title}}</h1>
+        <span flex></span>
+        <md-button class="toolbar-button-right md-raised md-cornered" ng-click="returnToHome()">
+            <i class="material-icons toolbar-home-button">home</i> Home
+        </md-button>
+    </div>
+</md-toolbar>

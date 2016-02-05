@@ -1,0 +1,53 @@
+/* begin video player */
+
+.videogular-container {
+    margin: auto;
+    overflow: hidden;
+    margin-top:10px;
+}
+
+.video-description {
+    width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    font-size:20px;
+    color:#fff;
+    
+}
+
+.video-menu md-card {
+    background-color: #eee;
+}
+
+.video-menu md-card-title-media {
+    margin-right: 15px;
+}
+.video-menu .md-headline {
+    color: #000;
+}
+.video-menu .active {
+    background-color: #4B88B6;
+}
+
+.video-menu .video-menu-header {
+    background-color: #396B9E;
+}
+
+.video-menu .active,
+.video-menu .active a,
+.video-menu .active .md-headline,
+.video-menu .video-menu-header {
+    color: #fff;
+}
+
+.video-menu,
+.video-menu .video-menu-header {
+    border-top-right-radius: 20px;
+}
+
+.video-menu-header .md-headline{
+    color:#fff;
+}
+
+/* end video player */

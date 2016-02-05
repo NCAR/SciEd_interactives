@@ -1,0 +1,76 @@
+<div class="container-fluid" id="{{level}}">
+    <div class="row">
+        <div ng-repeat="(key, content) in data">
+            <div class="col-md-4" ng-if="key =='DRAGGABLES'">
+                <ul id="draggables">
+                    <li class="{{data[level].correctDiv}} item" draggable item="item" id="{{data.ID}}" ng-repeat="data in shuffle(content)" ng-if="data[level]">
+                        <div class="header">
+                            <h4>{{data.TITLE}}</h4>
+                            <img src="{{data.IMAGE}}" alt="{{data.TITLE}}" />
+                        </div>
+                    </li>
+
+                </ul>
+
+
+            </div>
+            <div class="col-md-4" ng-if="key == 'DROPZONES'">
+                <div id="dropzones" ng-if="levelname == level" ng-repeat="(levelname, dropzone) in content">
+                    <div class="dropzone {{zone.CLASSNAME}}" ng-repeat="zone in dropzone">
+                        <div class="header">
+                            <h4>{{zone.TITLE}} <span class="dropzone_description">{{zone.DESCRIPTION}}</span></h4>
+                        </div>
+                        <ul class="bin" droppable drop="handleDrop" bin="bin" id="{{zone.ID}}"></ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4" ng-if="key == 'LEVELS'">
+                <div ng-if="levelname==level" ng-repeat="(levelname, leveldata) in content">
+                    <h1>{{leveldata.TITLE}}</h1>
+                    <div class="response">
+                        <h2 id="response_title">{{leveldata.DIRECTIONS.HEADING}}</h2>
+                        <p id="response_body">{{leveldata.DIRECTIONS.DESCRIPTION}}</p>
+                    </div>
+                    <p ng-if="leveldata.DIRECTIONS.SUBTEXT">{{leveldata.DIRECTIONS.SUBTEXT}}</p>
+
+                </div>
+
+                <div class="row">
+                    <h1 class="score">Your Score = <span ng-bind="score"></span></h1>
+                </div>
+                <div class="row">
+                    <h1 class="progress_header" class="col-xs-3">Your Progress:</h1>
+                    <div ng-repeat="(levelname, leveldata) in content" class="col-xs-3">
+                        <h2 class="pblabel">{{levelname}}</h2></div>
+                    <div class="meter col-xs-9">
+                        <span ng-style="{width: progressPercent}"></span>
+                    </div>
+                </div>
+
+
+                <div class="row levelbuttons">
+
+                    <button draggable="false" onmousedown="return false" ng-repeat="(levelname, leveldata) in content" class="col-xs-3 col-xs-offset-1" ng-class="{'active': level==levelname}" data="{{levelname}}" ng-click="gotoLevel(levelname)">{{levelname}}</button>
+
+
+                </div>
+            </div>
+            <audio id="{{audiodata.id}}" preload="auto" ng-if="key == 'AUDIO'" ng-repeat="(audiokey,audiodata) in content">
+                <source src="{{source.src}}" type="{{source.type}}" ng-repeat="source in audiodata.sources">
+            </audio>
+        </div>
+
+
+    </div>
+</div>
+<button id="creditsButton" draggable="false" onmousedown="return false" ng-click="toggleCreditsModal()">Credits</button>
+<ml-exhibits-footer-menu ng-if="showFooter" title="pageTitle" back-button-text="backButtonText" back-button="backButton" back-page="backPage"></ml-exhibits-footer-menu>
+<modal visible="showCreditsModal">
+    <div ng-bind-html="data.GLOBAL.CREDITS.TEXT | unsafe"></div>
+</modal>
+<modal visible="showCompleteModal" title="You did it!">
+    <p>Your score is {{score}} points.</p>
+    <button ng-click="nextLevel()" ng-if="level != last_level" id="nextButton">Next Level</button>
+    <button ng-click="restartGame()" ng-if="level == last_level" id="restartButton">Restart Game</button>
+</modal>

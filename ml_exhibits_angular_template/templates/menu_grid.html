@@ -1,0 +1,15 @@
+<div class="container-fluid  vertical-align" ng-controller="menuListCtrl" >
+    <div class="row {{row_height_style}}" ng-repeat="row in menu_data">
+        <div class="col-md-{{cols}} item" ng-repeat="item in row" ng-click="goToPage(item.url)">
+            <div class="menu-item" width="{{item.placeholder.width}}px" height="{{item.placeholder.height}}px">
+                <h1 ng-class="header_class">{{item.title}}</h1>
+                <video loop autoplay poster="{{item.placeholder.image}}" width="{{item.placeholder.width}}px" height="{{item.placeholder.height}}px" ng-if="item.placeholder.mp4" class="placeholder">
+                    <source ng-if="item.placeholder.mp4" ng-src="{{item.placeholder.mp4}}" type="video/mp4">
+                    <source ng-if="item.placeholder.ogg" ng-src="{{item.placeholder.ogg}}" type="video/ogg">
+                </video>
+                <img src="{{item.placeholder.image}}" width="{{item.placeholder.width}}px" height="{{item.placeholder.height}}px" ng-if="!item.placeholder.mp4" class="placeholder">
+            </div>
+        </div>
+    </div>
+</div>
+<ml-exhibits-footer-menu ng-if="showFooter" title="pageTitle" back-button-text="backButtonText" back-button="backButton" back-page="backPage"></ml-exhibits-footer-menu>

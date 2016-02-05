@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="edu.ucar.scied.template">
+
+<head>
+    <title>Ingredients</title>
+    <link href="bower_components/normalize.css/normalize.css" rel="stylesheet">
+    <link href="bower_components/jquery-ui/themes/ui-lightness/jquery-ui.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/videos.css" rel="stylesheet">
+    <link href="css/modal.css" rel="stylesheet">
+    <link href="css/drag_drop.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body class="{{bodylayout}}" ng-controller="webAppCtrl">
+    <div ng-view></div>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/videogular/videogular.js"></script>
+    <script src="bower_components/videogular-controls/vg-controls.js"></script>
+    <script src="bower_components/videogular-overlay-play/vg-overlay-play.js"></script>
+    <script src="bower_components/videogular-poster/vg-poster.js"></script>
+    <script src="bower_components/videogular-buffering/vg-buffering.js"></script>
+    <script src="bower_components/angulartics/dist/angulartics.min.js"></script>
+    <script src="bower_components/angulartics-google-analytics/dist/angulartics-google-analytics.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="bower_components/angular-swfobject/angular-swfobject.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/base/services.js"></script>
+    <script src="js/base/directives.js"></script>
+    <script src="js/base/filters.js"></script>
+    <script src="js/base/controllers.js"></script>
+    <script src="js/directives/directives.flash.js"></script>
+    <script src="js/directives/directives.modal.js"></script>
+    <script src="js/directives/directives.drag_drop.js"></script>
+    <script src="js/controllers/controllers.flash.js"></script>
+    <script src="js/controllers/controllers.videos.js"></script>
+    <script src="js/controllers/controllers.page.js"></script>
+    <script src="js/controllers/controllers.drag_drop.js"></script>
+
+   <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  //ga('create', 'UA-37974683-9', 'auto');
+
+</script>
+</body>
+</html>
