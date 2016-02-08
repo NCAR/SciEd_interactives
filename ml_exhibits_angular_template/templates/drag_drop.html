@@ -6,7 +6,7 @@
                     <li class="{{data[level].correctDiv}} item" draggable item="item" id="{{data.ID}}" ng-repeat="data in shuffle(content)" ng-if="data[level]">
                         <div class="header">
                             <h4>{{data.TITLE}}</h4>
-                            <img src="{{data.IMAGE}}" alt="{{data.TITLE}}" />
+                            <img ng-src="{{data.IMAGE}}" alt="{{data.TITLE}}" />
                         </div>
                     </li>
 

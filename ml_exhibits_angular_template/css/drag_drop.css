@@ -134,35 +134,6 @@ button.active {
     margin: 0;
     padding: 0.4em;
 }
-#LEVEL1 .dropzone.upper {
-    background:no-repeat url(../assets/apps/cloud-sorting/images/dropzones/altitude1.png) bottom center #DDDDDD;
-    margin-top:5px;
-}
-#LEVEL1 .dropzone.mid {
-    background:no-repeat url(../assets/apps/cloud-sorting/images/dropzones/altitude2.png) bottom center #DDDDDD;
-}
-#LEVEL1 .dropzone.lower {
-    background:no-repeat url(../assets/apps/cloud-sorting/images/dropzones/altitude3.png) bottom center #DDDDDD;
-}
-
-#LEVEL2 .dropzone.upper {
-    background:no-repeat url(../assets/apps/cloud-sorting/images/dropzones/water_ice1.png) bottom center #DDDDDD;
-    margin-top:5px;
-}
-#LEVEL2 .dropzone.mid {
-    background:no-repeat url(../assets/apps/cloud-sorting/images/dropzones/water_ice2.png) bottom center #DDDDDD;
-}
-#LEVEL2 .dropzone.lower {
-    background:no-repeat url(../assets/apps/cloud-sorting/images/dropzones/water_ice3.png) bottom center #DDDDDD;
-}
-#LEVEL3 .dropzone.upper {
-     background:no-repeat url(../assets/apps/cloud-sorting/images/dropzones/turbulent.png) bottom center #DDDDDD;
-    margin-top:5px;
-}
-#LEVEL3 .dropzone.lower {
-     background:no-repeat url(../assets/apps/cloud-sorting/images/dropzones/smooth.png) bottom center #DDDDDD;
-}
-
 
 .dropzone_description {
     margin-left:130px; 

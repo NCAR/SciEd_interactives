@@ -2,18 +2,8 @@ angular.module('edu.ucar.scied.directives.modal', [])
     /*http://jsfiddle.net/alexsuch/RLQhh/*/
     .directive('modal', function () {
     return {
-      template: '<div class="modal fade">' + 
-          '<div class="modal-dialog">' + 
-            '<div class="modal-content">' + 
-              '<div class="modal-header">' + 
-                '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' + 
-                '<h2 class="modal-title">{{ title }}</h2>' + 
-              '</div>' + 
-              '<div class="modal-body" ng-transclude></div>' + 
-            '</div>' + 
-          '</div>' + 
-        '</div>',
       restrict: 'E',
+      templateUrl: '/core/templates/modal.html',
       transclude: true,
       replace:true,
       scope:true,

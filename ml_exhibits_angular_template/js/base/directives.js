@@ -2,7 +2,7 @@ angular.module('edu.ucar.scied.directives', [])
     .directive("mlExhibitsFooterMenu", function (Redirect) {
         return {
             restrict: 'E',
-            templateUrl: 'templates/footer.html',
+            templateUrl: '/core/templates/footer.html',
             scope: {
                 title: "=",
                 backButtonText: "=",

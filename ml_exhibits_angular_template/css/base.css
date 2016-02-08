@@ -14,11 +14,6 @@ h1,
 .md-toolbar-tools h1 {
     font-weight: bold;
 }
-
-.home,
-.videos {
-    background-image: url(../assets/images/bkg/MLsnow_ts4.jpg);
-}
 .page-content {
     font-size: 24px;
     margin-left:25px;
