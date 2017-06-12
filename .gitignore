@@ -19,13 +19,3 @@ interactives/compare/content
 interactives/compare/assets/scripts/jquery
 interactives/memory/assets/scripts/jquery
 interactives/sort/assets/scripts/jquery
-
-
-#old exhibits template
-exhibits_template/script/jquery/*
-exhibits_template/images/*
-exhibits_template/videos/*
-
-#new exhibits template
-ml_exhibits_angular_template/assets/*
-ml_exhibits_angular_template/bower_components/*
