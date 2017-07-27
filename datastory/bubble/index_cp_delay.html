@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,900' rel='stylesheet' type='text/css'>
+
+    <style>
+     body{
+        background-color: whitesmoke;
+     }
+
+     svg {
+        background-color: white;
+        font-family: 'Lato';
+     }
+
+     circle {
+        fill: none;
+     }
+
+     .circlepack text {
+        text-anchor: middle;
+     }
+
+     text.city {
+        fill: #2D926D;
+     }
+
+     text.airline {
+        font-weight: bold;
+     }
+
+     .large {
+        fill: #DD5547;
+     }
+
+     .medium {
+        fill: #D4E169;
+     }
+
+     .small {
+        fill: #95E3B3;
+     }
+
+     .lvl2 {
+        stroke: #BDE5C0;
+        opacity: .5;
+     }
+
+     text.title {
+      font-size: 26px;
+     }
+
+
+    </style>
+</head>
+<body>
+    <svg width=960 height=500></svg>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.5.0/d3-legend.js"></script>
+    <script>
+    var width = 960,
+    height = 500,
+    svg = d3.select('svg');
+
+    d3.json('https://gist.githubusercontent.com/susielu/3d194b8660ec6ab214a3/raw/5093ce84b2b48940efc33df84a4d3b6a90ff26ed/airline-delays.json', function(err, json){
+
+        //creating nested data
+        var nested = d3.nest()
+            .key(function(d) { return d.carrier; })
+            .key(function(d) { return d.origin; })
+            .key(function(d) {
+                var delay = d.delay;
+
+                if (delay <= 30){
+                    return "15 to 30 min";
+                } else if (delay <= 60){
+                    return "31 min to 1 hour";
+                } else {
+                    return "More than 1 hour";
+                }
+            })
+            .rollup(function(d) { return d.length; })
+            .entries(json)
+
+        //------start of hack------
+
+        //creating different summary levels for
+        //labels to have a meaningful size in the
+        //pack algorithm
+        var cityCount = d3.nest()
+            .key(function(d){ return d.carrier; })
+            .key(function(d){ return d.origin; })
+            .rollup(function(d) { return d.length; })
+            .entries(json);
+
+        var airlineCount = cityCount.map(function(d){
+          return {
+            key: d.key,
+            values: d.values
+              .map(function(d){ return d.values})
+              .reduce(function(p, c) {
+              return p + c;} )
+          }
+        })
+
+        nested.forEach(function(d, i){
+            //add bubble for city labels based on size of children
+            cityCount[i].values.forEach(function(c, j){
+                d.values[j].values.push({
+                    key: c.key,
+                    values: c.values
+                })
+            })
+
+            //add bubble for airline labels based on size of children
+            d.values.push({
+              key: d.key,
+              airline: true,
+              values: cityCount[i].values.map( function(d) {
+                return {values: d.values};
+              })
+            })
+        })
+        //------end of hack-------
+
+        var nest = {'name': 'root', 'values': nested};
+        var color = d3.scale.ordinal()
+            .domain(["15 to 30 min", "31 min to 1 hour", "More than 1 hour"])
+            .range(["small", "medium", "large"])
+
+        //making the circle pack
+        var pack = d3.layout.pack()
+          .size([width, height + 80])
+          .children(function(d){ return d.values; })
+          .value(function(d){ return d.values; })
+
+        var node = svg.append('g')
+          .attr('class', 'circlepack')
+          .attr('transform', 'translate(100,-40)')
+          .datum(nest).selectAll('.node')
+          .data(pack.nodes)
+          .enter().append('g')
+          .attr('class', function(d){ return d.children ? 'node': 'leaf node'; })
+          .attr('transform', function(d){ return 'translate(' + d.x + ',' + d.y + ')'; });
+
+        node.filter(function(d){ return d.depth === 2 || d.depth === 3 })
+            .append("circle")
+            .attr("r", function(d) { return d.r; })
+            .attr("class", function(d){
+                var level = d.depth;
+                if (level === 3 && color.domain().indexOf(d.key) >= 0){
+                    return color(d.key);
+                } else if (level === 2 && !d.airline){
+                    return "lvl2";
+              }
+            });
+
+        var airlineMap = {
+          "WN": "Southwest",
+          "UA": "United",
+          "OO": "Skywest",
+          "AA": "American",
+          "DL": "Delta",
+          "US": "US Airways",
+          "B6": "Jetblue"
+        }
+
+        //airline labels
+        node.filter(function(d){ return d.depth === 2 && d.airline})
+            .append("text")
+            .attr('y', function(d){ return d.r*.25; })
+            .attr('class', 'airline')
+            .style('font-size', function(d){ return d.r*.4})
+            .text(function(d) { return airlineMap[d.key] ; });
+
+        //city labels
+        node.filter(function(d){ return d.depth === 3 &&  color.domain().indexOf(d.key) < 0})
+          .append("text")
+          .attr('y', function(d){ return + d.r*.3; })
+          .attr('class', 'city')
+          .style('font-size', function(d){ return d.r*.6})
+          .text(function(d) {
+            return d.key ; });
+
+        var annotation = svg.append('g')
+          .attr('transform', 'translate(50,50)');
+
+        annotation.append('text')
+          .text('Flight Delay Worst Offenders')
+          .attr('class', 'title')
+
+        annotation.append('text')
+          .text('Airport codes = departure city')
+          .attr('y', 50)
+
+        //d3-legend
+        var legend = d3.legend.color()
+            .shapePadding(5)
+            .useClass(true)
+            .scale(color);
+
+        annotation.append('g')
+            .attr('transform', 'translate(0,80)')
+            .call(legend);
+
+
+    })
+
+    </script>
+</body>
+</html>

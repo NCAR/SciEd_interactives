@@ -20,6 +20,12 @@ $db = "scied_exhibits";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db);
 
+if(isset($_GET['year']) && ctype_digit($_GET['year']) && strlen($_GET['year']) == 4){
+  $year = $_GET['year'];
+} else {
+  $year = 2010;
+}
+
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -73,7 +79,7 @@ foreach($a_regions_emissions as $index=>$value){
 //sort countries into the regions mentioned above
 $a_years = array();
 
-$sql = "SELECT dsdv.year as year, dsdv.value as value, dsc.id as country_id, dsc.name as country_name from data_story_data_values as dsdv, data_story_countries as dsc WHERE dsdv.datatype_id=".$datatype_id." AND dsc.id=dsdv.country_id ORDER BY dsc.name,year";
+$sql = "SELECT dsdv.year as year, dsdv.value as value, dsc.id as country_id, dsc.name as country_name from data_story_data_values as dsdv, data_story_countries as dsc WHERE dsdv.datatype_id=".$datatype_id." AND dsc.id=dsdv.country_id AND dsdv.year = ".$year." ORDER BY dsc.name,year";
 if (!$result = $conn->query($sql)) {
   printf("Errormessage: %s\n", $conn->error);
 }

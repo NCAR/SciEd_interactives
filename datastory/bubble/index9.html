@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.node {
+  cursor: pointer;
+}
+
+.node:hover {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.node--leaf {
+  fill: white;
+}
+
+.label {
+  font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-anchor: middle;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+}
+
+.label,
+.node--root,
+.node--leaf {
+  pointer-events: none;
+}
+.datatable_region{
+	display: inline;
+	float:left;
+	margin:10px;
+}
+.datatable_region h2 {
+	display:inline-block;
+}
+.datatable_region th, .datatable_region td {
+	border:1px solid black;
+	padding: 2px 4px;
+}
+.datatable_region th {
+	background-color: #ccc;
+		border:1px solid #333;
+}
+#printedList {
+	display:block;
+	width:950px;
+}
+.clear {
+	clear:both;
+}
+
+</style>
+<svg width="960" height="960"></svg>
+<select class="yearOptions"></select>
+<div id="selectedYearText"></div>
+<div id="printedList"></div>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<!-- jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="script/script9.js"></script>
+</body>
+</html>
