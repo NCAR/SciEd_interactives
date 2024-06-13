@@ -1,0 +1,163 @@
+<!doctype html>
+<html class="no-js">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Pressure</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5 maximum-scale=1.0">
+      <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+      <link rel="stylesheet" href="css/normalize.css">
+      <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+
+      <link rel="stylesheet" href="css/main.css">
+      <script src="https://d3js.org/d3.v7.min.js"></script>
+   </head>
+   <body>
+
+      <div id="interactive_container">
+         <div id="interactive_controls">
+            <div class="instructions">
+               <p>
+                  <!--//Change the water levels in each tank, turn on the flow valve, and then click
+                     <button type="button" id="equalize" value="Equalize">
+                     Equalize
+                     </button>
+                     
+                     //-->
+               </p>
+               <h2>Instructions</h2>
+               <ul>
+                  <li>Drag the red slider bars to set the initial height of the water in each tank.</li>
+                  <li>Click the red valve to start the flow of water from one tank to the next.</li>
+                  <li>Drag the pressure gauge into the water column to check the pressure at different heights in each tank.</li>
+                  <li>Select the Flow tab (above) to see a graph of the water velocity. Select the Water Height tab to see a graph of the change in water height for each tank.</li>
+                  <li>You may use keys w,a,s,d to move the pressure gauge.</li>
+               </ul>
+               <h2>Change Units</h2>
+               <div id="unit_selections">
+                  <span>
+                     <label for="pressureUnits">Pressure: </label>
+                     <select id="pressureUnits">
+                        <option value="psi">psi</option>
+                        <option value="millibars">millibars</option>
+                        <option value="pascals">pascals</option>
+                        <option value="kPa">kPa</option>
+                     </select>
+                  </span>
+                  <br/>
+                  <span>
+                     <label for="flowUnits">Flow: </label>
+                     <select id="flowUnits">
+                        <option value="m/s">m/s</option>
+                        <option value="ft/sec">ft/sec</option>
+                        <option value="mph">mph</option>
+                        <option value="km/hr">km/hr</option>
+                     </select>
+                  </span>
+                  <br/>
+                  <span>
+                     <label for="heightUnits">Tank Height: </label>
+                     <select id="heightUnits">
+                        <option value="meters">meters</option>
+                        <option value="feet">feet</option>
+                        <option value="inches">inches</option>
+                     </select>
+                  </span>
+                  <br/>
+                  <input type="checkbox" id="incSurfacePressure" checked="checked"/>
+                  <label for="incSurfacePressure"> Include surface pressure?</label>
+                  <br/>
+               </div>
+            </div>
+         </div>
+         <div id="canvas_container">
+            <canvas id="bkgCanvas" class="canvas" height="700" width="700">
+               No support
+            </canvas>
+            <canvas id="tickmarkCanvas" class="canvas" height="700" width="700">
+               No support
+            </canvas>
+            <canvas id="tank1Canvas" class="canvas" height="700" width="700" aria-label="Tank 1">
+               No support
+            </canvas>
+            <canvas id="tank2Canvas" class="canvas" height="700" width="700" aria-label="Tank 2">
+               No support
+            </canvas>
+            <div id="controls" class="canvas"  height="700" width="700">
+               <span id="selectedLevel1_control">
+                  <div id="selectedLevel1-range-min"></div>
+                  <p>
+                     <label for="selectedLevel1_actual">Tank 1 water level: <br/><span class="pressure_units"></span></label>
+                     <input type="text" id="selectedLevel1">
+                     <input type="text" id="selectedLevel1_actual" readonly tabindex="-1">
+                  </p>
+               </span>
+               <span id="selectedLevel2_control">
+                  <div id="selectedLevel2-range-min"></div>
+                  <p>
+                     <label for="selectedLevel2_actual">Tank 2 water level: <br/><span class="pressure_units"></span></label>
+                     <input type="text" id="selectedLevel2">
+                     <input type="text" id="selectedLevel2_actual" readonly tabindex="-1">
+                  </p>
+               </span>
+            </div>
+            <canvas id="gaugeCanvas" class="canvas" height="700" width="700" tabindex="0" aria-label="gauge">
+               No support
+            </canvas>
+            <div id="stopCockControls">
+               <p>
+                  <button type="button" id="stopCock" value="Off" class='sprite stopcock'>
+                  Off
+                  </button>
+               </p>
+            </div>
+         </div>
+         <div style="clear:both"></div>
+      </div>
+
+      <div id="tabs" class="interactive_pressure">
+         <ul>
+            <li><a href="#tabs-1">Flow</a></li>
+            <li><a href="#tabs-1Data">Flow Data</a></li>
+            <li><a href="#tabs-2">Water Height</a></li>
+            <li><a href="#tabs-2Data">Water Height Data</a></li>
+         </ul>
+         <div id="tabs-1">
+            <div class="d3chart1" id="d3chart1"></div>
+         </div>
+         <div id="tabs-1Data">
+            <div class="d3table1" id="d3table1"></div>
+         </div>
+         <div id="tabs-2">
+            <div class="d3chart2" id="d3chart2"></div>
+         </div>
+         <div id="tabs-2Data">
+            <div class="d3table2" id="d3table2"></div>
+         </div>
+      </div>
+      </div>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script>
+         window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')
+      </script>
+      <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+      <script>
+         $(function() {
+         $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+         $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+         });
+      </script>
+      <script src="js/vendor/modernizr-2.7.1.min.js"></script>
+      <script src="js/vendor/EaselJS-release_v0.7.1/lib/easeljs-0.7.1.min.js"></script>
+      <script src="js/vendor/TweenJS-release_v0.5.1/lib/tweenjs-0.5.1.min.js"></script>
+      <script src="js/vendor/jquery.ui.touch-punch.min.js"></script>
+      <script src="js/classes/Tank.js"></script>
+      <script src="js/classes/Gauge.js"></script>
+      <script src="js/plugins.js"></script>
+      <script src="https://code.highcharts.com/highcharts.js"></script>
+      <script src="js/main.js"></script>
+
+   </body>
+</html>
